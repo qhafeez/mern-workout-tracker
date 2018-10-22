@@ -1,0 +1,21 @@
+.Home{
+
+width:100%;
+margin:auto;
+text-align:center;
+
+}
+
+.buttonContainer{
+
+	padding-top:50px;
+	cursor: pointer;
+
+}
+
+.onGoingWorkoutContainer{
+
+	display: flex;
+	justify-content: center;
+
+}

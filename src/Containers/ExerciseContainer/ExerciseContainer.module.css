@@ -1,0 +1,116 @@
+
+
+.exerInfoContainer{
+	display: flex;
+flex-direction: row;
+justify-content: space-between;
+padding:10px;
+background-color: #2C74B7;
+color:white;
+border-radius: 5px 5px 0px 0px;
+
+}
+
+
+
+.individualExerciseContainer{
+	
+	
+	margin:5px;
+	background-color: white;
+	border-radius:5px;
+	box-shadow: 2px 2px 2px lightgray;
+	justify-content: center;
+	box-sizing: content-box;
+
+
+
+}
+
+.individualExerciseContainer:last-of-type{
+	
+	margin-bottom: 58px;
+
+
+
+
+}
+
+
+
+.setSection{
+	display:flex;
+	justify-content: center;
+	height:50px;
+	padding: 20px 0px 20px 0px;
+	font-size: 30px;
+}
+
+
+
+.setsContainer{
+	display: flex;
+	flex-direction: row;
+	
+	
+
+
+}
+
+.setsWeightContainer{
+
+	display: flex;
+
+
+}
+
+.setsRepsContainer{
+
+	padding-right: 10px;
+
+}
+
+
+.oneSet{
+
+	
+	justify-content: center;
+
+}
+
+.twoSet{
+
+	width:50%;
+	justify-content: space-between;
+	
+}
+
+.threeSet{
+
+	width:70%;
+	justify-content: space-between;
+	
+}
+
+.fourSet{
+
+	width:80%;
+	justify-content: space-between;
+	
+}
+
+.fiveSet{
+
+	width:90%;
+	justify-content: space-between;
+	
+}
+
+.removeContainer{
+
+display: flex;
+justify-content: flex-end;
+
+}
+
+

@@ -1,0 +1,34 @@
+.selectorContainer{
+
+	display: flex;
+	justify-content: space-between;
+	width:100%;
+	margin:auto;
+	flex-direction: column;
+
+}
+
+form{
+	margin:0 5%;
+}
+
+.individualContainer{
+	width:100%;
+	display: flex;
+	justify-content: space-between;
+	height:50px;
+	border-bottom: 1px solid lightgray;
+	align-items: center;
+	
+}
+
+input[type="text"]{
+	text-align: center;
+}
+
+.addingContainer{
+
+	display: flex;
+	align-items: center;
+
+}

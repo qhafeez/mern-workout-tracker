@@ -1,0 +1,48 @@
+.mainContainer{
+
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #F5F5F5;
+
+}
+
+.historyContainer{
+
+	background-color: #F5F5F5;
+	height: 100vh;
+	width:100%;
+
+
+}
+
+.title{
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+}
+
+.paginationContainer{
+	position:fixed;
+	bottom:0;
+	right:0;
+	left:0;
+	display: flex;
+	justify-content: center;
+	background-color: #F5F5F5;
+
+
+}
+
+@media (min-width:813px){
+
+	.historyContainer{
+
+		width:50%;
+		max-width: 530px;
+
+	}
+
+}

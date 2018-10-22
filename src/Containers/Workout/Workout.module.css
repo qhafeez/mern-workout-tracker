@@ -1,0 +1,190 @@
+.mainContainer{
+
+	display: flex;
+	justify-content: center;
+	background-color: #F5F5F5;
+}
+
+.selectorContainer{
+
+	display: flex;
+	justify-content: space-between;
+	width:100%;
+	/*margin:auto;*/
+	flex-direction: column;
+	background-color: #F5F5F5;
+	/*margin-top:-17px;*/
+	/*height:calc(100vh - 56px);*/
+	/*position: relative;*/
+	overflow-x: hidden;
+
+}
+
+.exercisesContainer{
+
+	width:100%;
+	display:flex;
+	flex-direction: column;
+	
+	/*overflow:scroll;*/
+	
+
+
+}
+
+.innerExerciseContainer{
+
+	/*overflow: scroll;*/
+}
+
+.buttonContainer{
+	
+	position: fixed;
+	
+	bottom: 0;
+	
+	left:0;
+
+	right:0;
+	display: flex;
+	
+	justify-content: center;
+
+	background-color:#F2F2F2;
+	height:40px;
+			
+}
+
+.innerContainer{
+
+	
+	display: flex;
+	flex-direction: row;
+
+
+}
+
+/*.openContainer{
+
+	display: flex;
+	flex-direction:column;
+	align-items: flex-start;
+
+
+}*/
+
+textarea{
+	width:99%;
+	height:82%;
+	font-size:18px;
+	border: none;
+}
+
+textarea:focus{
+	border:none;
+}
+
+.doneContainer{
+
+	display: flex;
+	justify-content: flex-end;
+	font-size:25px;
+	padding-top:5px;
+	padding-bottom:5px;
+
+}
+
+.textAreaContainer{
+
+	width:99%;
+	height:85%;
+
+}
+
+.buttonPaddingLeft{
+	padding-left:10px;
+}
+
+
+@media (min-width:813px){
+
+	.selectorContainer{
+		width:50%;
+		max-width: 530px;
+	}
+
+	.buttonContainer{
+
+	position: fixed;
+	
+	bottom: 0;
+	
+	left:0;
+
+	right:0;
+	display: flex;
+	
+	justify-content: center;
+
+	background-color:#F2F2F2;
+	height:58px;
+	
+
+	
+	
+}
+}
+
+
+
+
+/*exerInfoContainer{
+	display: flex;
+flex-direction: row;
+justify-content: space-between;
+padding-bottom:10px;
+
+
+}
+
+.individualExerciseContainer{
+	display: flex;
+	flex-direction: column;
+	padding:20px 10px 20px 10px;
+	margin:5px;
+	background-color: white;
+
+}
+
+.setSection{
+	display:flex;
+	justify-content: center;
+}
+
+.setsContainer{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width:90%;
+
+
+}
+
+.set{
+	background-color: #2C74B8;
+	height:50px;
+	width:50px;
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+
+}
+
+.rep{
+	
+
+	  
+    align-self: center;
+
+}
+*/

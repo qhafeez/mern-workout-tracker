@@ -1,0 +1,15 @@
+.Content{
+
+/*margin-top: 30px;	*/
+
+}
+
+@media (min-width:813px){
+
+	.Content{
+
+		/*margin-top:58px;*/
+
+	}
+
+}

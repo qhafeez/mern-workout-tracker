@@ -1,0 +1,20 @@
+.completedWorkoutContainer{
+
+	padding:20px 10px 20px 10px;
+	margin:15px 5px 0px 5px;
+	background-color: white;
+	border-radius:5px;
+	box-shadow: 2px 2px 2px lightgray;
+	justify-content: center;
+	box-sizing: content-box;
+	cursor: pointer;
+}
+
+.dateContainer{
+
+	display: flex;
+	justify-content: center;
+	/*padding-bottom: 10px;*/
+	font-size:20px;
+
+}

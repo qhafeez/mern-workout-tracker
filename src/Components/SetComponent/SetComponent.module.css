@@ -1,0 +1,19 @@
+.set{
+	background-color: #2C74B8;
+	height:50px;
+	width:50px;
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+	cursor:pointer;
+	color:white;
+
+}
+
+.rep{
+	
+
+	  
+    align-self: center;
+
+}
