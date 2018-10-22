@@ -7,6 +7,7 @@ const passport = require("passport");
 const passportSetup = require("./config/passport-setup");
 const bodyParser = require("body-parser");
 const flash= require("connect-flash");
+const path= require("path");
 
 const cookieSession = require("cookie-session");
 
@@ -21,9 +22,17 @@ app.use(cookieSession({
 	keys:[keys.session.cookieKey]	
 }));
 
+
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, 'client/build')))
+// Anything that doesn't match the above, send back index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/build/index.html'))
+})
+
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
+
 
 
 
@@ -45,7 +54,7 @@ app.get("/google", passport.authenticate("google",{
 	failureFlash:"failure"
 
 }),(req,res)=>{
-	console.log(req.flash());
+	// console.log(req.flash());
 });
 
 
@@ -715,10 +724,10 @@ function getExercisesInWorkout(connection,workoutId){
 // }
 
 
-
+const port = process.env.PORT || 4000;
 let http = require("http");
 let server = http.createServer(app,(req,res)=>{
 	res.writeHead(200, {"Access-Control-Allow-Origiin": "*"})
 });
-server.listen(4000);
+server.listen(PORT);
 // app.listen(4000, () => console.log("Listening on port 4000!"));
