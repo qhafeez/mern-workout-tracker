@@ -55,6 +55,7 @@ app.get("/google", passport.authenticate("google",{
 
 }),(req,res)=>{
 	// console.log(req.flash());
+	console.log("herokuuuuuuu");
 });
 
 
