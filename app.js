@@ -26,9 +26,7 @@ app.use(cookieSession({
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, 'client/build')))
 // Anything that doesn't match the above, send back index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/client/build/index.html'))
-})
+
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -40,12 +38,12 @@ app.use(passport.session());
 let connection =keys.connection;
 
 
-let options = {
-		origin:"http://localhost:3000",
-		credentials:true,
-		allowHeaders:"Content-Type"
-	}
-app.use(cors(options));
+// let options = {
+// 		origin:"https://workout-tracker-qh.herokuapp.com/#/",
+// 		credentials:true,
+// 		allowHeaders:"Content-Type"
+// 	}
+// app.use(cors(options));
 
  
 app.get("/google", passport.authenticate("google",{
@@ -303,6 +301,11 @@ app.post("/addRep", (req,res)=>{
 
 	}
 
+})
+
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/build/index.html'))
 })
 
 function getIdOfMostRecentWorkout(connection, userId){
