@@ -7,7 +7,7 @@ import * as actions from "../../store/actions/index";
 
 import { connect } from "react-redux";
 import withErrorHandler from "../../HOC/withErrorHandler/withErrorHandler";
-import axiosInstance from "../../axios-db";
+import axiosInstance from "axios";
 import Spinner from  "../../Components/UI/Spinner/Spinner";
 import appScreenshot from "../../Assets/Images/appScreenshot.png"
 
@@ -161,7 +161,12 @@ class Auth extends Component {
 
 	submitHandler = (event) =>{
 		event.preventDefault();
-		this.props.onAuth();
+		
+		axiosInstance.get("/google").then(response=>{
+			console.log(response);
+		}).catch(err=>{
+			console.log(err);
+		})
 
 
 	}
@@ -261,7 +266,7 @@ class Auth extends Component {
 							<Button style={{margin:"0px"}} btnType="Success">Submit</Button>
 						</form>	
 							<Button style={{margin:"0px"}} btnType="Danger" clicked={this.switchAuthModeHandler}>SWITCH TO {this.state.isSignUp ? "Sign In" : "SIGN UP"}</Button>
-							<a href="http://localhost:4000/google">GOOGLE</a>
+							<a onClick={this.submitHandler}>GOOGLE</a>
 							
 					</div>
 					<div className={classes.appInfoContainer}>
