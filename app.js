@@ -50,7 +50,7 @@ let connection =keys.connection;
 // app.use(cors(options));
 
  
-app.get("/google", passport.authenticate("google",{
+app.get("https://workout-tracker-qh.herokuapp.com/google", passport.authenticate("google",{
 
 	scope:['profile'],
 	failureFlash:"failure"
