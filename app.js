@@ -9,9 +9,9 @@ const bodyParser = require("body-parser");
 const flash= require("connect-flash");
 const path= require("path");
 
-console.log("path is");
+console.log("process env");
 console.log("-------");
-console.log(path);
+console.log(process.env.PWD);
 
 const cookieSession = require("cookie-session");
 
