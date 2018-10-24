@@ -305,6 +305,7 @@ app.post("/addRep", (req,res)=>{
 
 
 app.get('*', (req, res) => {
+	console.log("herokuuuuuuu catchall")
   res.sendFile(path.join(__dirname + '/client/build/index.html'))
 })
 
