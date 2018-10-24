@@ -28,8 +28,13 @@ app.use(cookieSession({
 
 
 // Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, 'client/build')))
-// Anything that doesn't match the above, send back index.html
+// app.use(express.static(path.join(__dirname, 'client/build')))
+
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static('client/build'));
+}
+
+
 
 
 app.use(passport.initialize());
@@ -50,7 +55,7 @@ let connection =keys.connection;
 // app.use(cors(options));
 
  
-app.get("https://workout-tracker-qh.herokuapp.com/google", passport.authenticate("google",{
+app.get("/google", passport.authenticate("google",{
 
 	scope:['profile'],
 	failureFlash:"failure"
