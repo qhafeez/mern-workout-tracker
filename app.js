@@ -8,6 +8,7 @@ const passportSetup = require("./config/passport-setup");
 const bodyParser = require("body-parser");
 const flash= require("connect-flash");
 const path= require("path");
+console.log("path =" + path);
 
 const cookieSession = require("cookie-session");
 
