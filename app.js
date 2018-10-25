@@ -66,7 +66,7 @@ app.get("/google", passport.authenticate("google",{
 
 }),(req,res)=>{
 	// console.log(req.flash());
-	res.sendFile(path.join(__dirname + '/client', 'build', 'index.html'))
+	console.log("herokuuuuuuu");
 });
 
 
