@@ -57,12 +57,7 @@ let connection =keys.connection;
 // app.use(cors(options));
 
 
-app.get('/*', (req, res) => {
-  let url = path.join(__dirname, '/client/build', 'index.html');
-  if (!url.startsWith('/app/')) // we're on local windows
-    url = url.substring(1);
-  res.sendFile(url);
-});
+
  
 app.get("/google", passport.authenticate("google",{
 
@@ -325,11 +320,7 @@ app.post("/addRep", (req,res)=>{
 // 	app.use(express.static(path.join(__dirname, 'client','build')));
 // }
 
-app.get('*', (req, res) => {
-	console.log("herokuuuuuuu catchall")
-	console.log(path.join(__dirname + '/client', 'build', 'index.html'));
-  res.sendFile(path.join(__dirname + '/client', 'build', 'index.html'));
-})
+
 
 function getIdOfMostRecentWorkout(connection, userId){
 	
@@ -756,6 +747,13 @@ let http = require("http");
 let server = http.createServer(app,(req,res)=>{
 	res.writeHead(200, {"Access-Control-Allow-Origiin": "*"})
 });
+
+app.get('*', (req, res) => {
+	console.log("herokuuuuuuu catchall")
+	console.log(path.join(__dirname + '/client', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname + '/client', 'build', 'index.html'));
+})
+
 server.listen(port, ()=>{
 	console.log("Listening on "+ port)
 });
