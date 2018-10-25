@@ -40,7 +40,7 @@ app.use(passport.session());
 
 if (process.env.NODE_ENV === 'production') {
 	console.log("inside prod");
-	app.use(express.static('client/build'));
+	app.use(express.static(path.join(__dirname, '../client','build')));
 }
 
 
@@ -751,7 +751,7 @@ let server = http.createServer(app,(req,res)=>{
 app.get('*', (req, res) => {
 	console.log("herokuuuuuuu catchall")
 	console.log(path.join(__dirname + '/client', 'build', 'index.html'));
-  res.sendFile('client/build/index.html');
+  res.sendFile(path.join(__dirname + '../client', 'build', 'index.html'));
 })
 
 server.listen(port, ()=>{
