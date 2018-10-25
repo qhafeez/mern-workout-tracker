@@ -38,10 +38,7 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-if (process.env.NODE_ENV === 'production') {
-	console.log("inside prod");
-	app.use(express.static(path.join(__dirname, '../client','build')));
-}
+
 
 
 
@@ -748,11 +745,20 @@ let server = http.createServer(app,(req,res)=>{
 	res.writeHead(200, {"Access-Control-Allow-Origiin": "*"})
 });
 
+if (process.env.NODE_ENV === 'production') {
+	console.log("inside prod");
+	app.use(express.static(path.join(__dirname, '/client','build')));
+
+
 app.get('*', (req, res) => {
 	console.log("herokuuuuuuu catchall")
 	console.log(path.join(__dirname + '/client', 'build', 'index.html'));
-  res.sendFile(path.join(__dirname + '../client', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname + '/client', 'build', 'index.html'));
 })
+
+}
+
+
 
 server.listen(port, ()=>{
 	console.log("Listening on "+ port)
