@@ -751,7 +751,7 @@ let server = http.createServer(app,(req,res)=>{
 app.get('/*', (req, res) => {
 	console.log("catchall");
 	console.log(req.hostname);
-	console.log(req.originalUrl);
+	console.log(req.path);
 	console.log(path.join(__dirname + '/client', 'build', 'index.html'));
   res.sendFile(path.join(__dirname + '/client', 'build', 'index.html'));
 })
