@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import authReducer from "./store/reducers/auth-reducer";
 import workoutReducer from "./store/reducers/workout-reducer";
 import thunk from "redux-thunk";
-import {HashRouter} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import registerServiceWorker from './registerServiceWorker';
 
 
@@ -28,8 +28,8 @@ ReactDOM.render(
 
 
 	<Provider store={store}>
-		<HashRouter>
+		<BrowserRouter>
 			<App />
-		</HashRouter>
+		</BrowserRouter>
 	</Provider>, document.getElementById('root'));
 registerServiceWorker();
