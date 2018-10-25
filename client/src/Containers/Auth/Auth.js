@@ -250,7 +250,14 @@ class Auth extends Component {
 						}
 				
 			}
-
+			//this was inside the classes.auth div
+			// {authRedirect}							
+			// 				{errorMessage}
+			// 			<form >
+			// 					{form}
+			// 				<Button style={{margin:"0px"}} btnType="Success">Submit</Button>
+			// 			</form>	
+			// 				<Button style={{margin:"0px"}} btnType="Danger" clicked={this.switchAuthModeHandler}>SWITCH TO {this.state.isSignUp ? "Sign In" : "SIGN UP"}</Button>
 		
 
 
@@ -259,13 +266,7 @@ class Auth extends Component {
 				<div className={classes.homepageContainer}>
 					<div className={classes.Auth}>
 					
-						{authRedirect}							
-							{errorMessage}
-						<form >
-								{form}
-							<Button style={{margin:"0px"}} btnType="Success">Submit</Button>
-						</form>	
-							<Button style={{margin:"0px"}} btnType="Danger" clicked={this.switchAuthModeHandler}>SWITCH TO {this.state.isSignUp ? "Sign In" : "SIGN UP"}</Button>
+						
 							<a href="/google">GOOGLE</a>
 							
 					</div>
