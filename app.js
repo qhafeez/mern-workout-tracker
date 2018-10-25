@@ -45,12 +45,12 @@ app.use(passport.session());
 let connection =keys.connection;
 
 
-// let options = {
-// 		origin:"https://workout-tracker-qh.herokuapp.com/#/",
-// 		credentials:true,
-// 		allowHeaders:"Content-Type"
-// 	}
-// app.use(cors(options));
+let options = {
+		origin:"https://workout-tracker-qh.herokuapp.com",
+		credentials:true,
+		allowHeaders:"Content-Type"
+	}
+app.use(cors(options));
 
  
 app.get("/google", passport.authenticate("google",{
