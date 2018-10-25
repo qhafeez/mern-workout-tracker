@@ -39,6 +39,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 if (process.env.NODE_ENV === 'production') {
+	console.log("inside prod");
 	app.use(express.static(path.join(__dirname, 'client','build')));
 }
 
@@ -313,9 +314,9 @@ app.post("/addRep", (req,res)=>{
 
 })
 
-if (process.env.NODE_ENV === 'production') {
-	app.use(express.static(path.join(__dirname, 'client','build')));
-}
+// if (process.env.NODE_ENV === 'production') {
+// 	app.use(express.static(path.join(__dirname, 'client','build')));
+// }
 
 app.get('*', (req, res) => {
 	console.log("herokuuuuuuu catchall")
