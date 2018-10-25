@@ -160,13 +160,13 @@ class Auth extends Component {
 	}
 
 	submitHandler = (event) =>{
-		// event.preventDefault();
+		event.preventDefault();
 		
-		// axiosInstance.get("/google").then(response=>{
-		// 	console.log(response);
-		// }).catch(err=>{
-		// 	console.log(err);
-		// })
+		axiosInstance.get("/google").then(response=>{
+			console.log(response);
+		}).catch(err=>{
+			console.log(err);
+		})
 
 
 	}
@@ -266,7 +266,7 @@ class Auth extends Component {
 							<Button style={{margin:"0px"}} btnType="Success">Submit</Button>
 						</form>	
 							<Button style={{margin:"0px"}} btnType="Danger" clicked={this.switchAuthModeHandler}>SWITCH TO {this.state.isSignUp ? "Sign In" : "SIGN UP"}</Button>
-							<a href="/google">GOOGLE</a>
+							<a onClick={this.submitHandler}>GOOGLE</a>
 							
 					</div>
 					<div className={classes.appInfoContainer}>
