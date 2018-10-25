@@ -28,7 +28,7 @@ ReactDOM.render(
 
 
 	<Provider store={store}>
-		<BrowserRouter basename={'/build'}>
+		<BrowserRouter basename={'../build'}>
 			<App />
 		</BrowserRouter>
 	</Provider>, document.getElementById('root'));
