@@ -38,6 +38,9 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static(path.join(__dirname, 'client','build')));
+}
 
 
 
@@ -45,12 +48,12 @@ app.use(passport.session());
 let connection =keys.connection;
 
 
-let options = {
-		origin:"https://workout-tracker-qh.herokuapp.com",
-		credentials:true,
-		allowHeaders:"Content-Type"
-	}
-app.use(cors(options));
+// let options = {
+// 		origin:"https://workout-tracker-qh.herokuapp.com",
+// 		credentials:true,
+// 		allowHeaders:"Content-Type"
+// 	}
+// app.use(cors(options));
 
  
 app.get("/google", passport.authenticate("google",{
@@ -311,12 +314,12 @@ app.post("/addRep", (req,res)=>{
 })
 
 if (process.env.NODE_ENV === 'production') {
-	app.use(express.static(path.join(__dirname, 'client/build')));
+	app.use(express.static(path.join(__dirname, 'client','build')));
 }
 
 app.get('*', (req, res) => {
 	console.log("herokuuuuuuu catchall")
-  res.sendFile(path.join(__dirname + '/client/build/index.html'))
+  res.sendFile(path.join(__dirname + 'client', 'build', 'index.html'))
 })
 
 function getIdOfMostRecentWorkout(connection, userId){

@@ -266,7 +266,7 @@ class Auth extends Component {
 							<Button style={{margin:"0px"}} btnType="Success">Submit</Button>
 						</form>	
 							<Button style={{margin:"0px"}} btnType="Danger" clicked={this.switchAuthModeHandler}>SWITCH TO {this.state.isSignUp ? "Sign In" : "SIGN UP"}</Button>
-							<a onClick={this.submitHandler}>GOOGLE</a>
+							<a href="/google">GOOGLE</a>
 							
 					</div>
 					<div className={classes.appInfoContainer}>
