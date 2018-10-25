@@ -320,7 +320,8 @@ app.post("/addRep", (req,res)=>{
 
 app.get('*', (req, res) => {
 	console.log("herokuuuuuuu catchall")
-  res.sendFile(path.join(__dirname + '/client', 'build', 'index.html'))
+	console.log(path.join(__dirname + '/client', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname + '/client', 'build', 'index.html'));
 })
 
 function getIdOfMostRecentWorkout(connection, userId){
