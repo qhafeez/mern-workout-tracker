@@ -748,11 +748,11 @@ let server = http.createServer(app,(req,res)=>{
 	res.writeHead(200, {"Access-Control-Allow-Origiin": "*"})
 });
 
-app.get('/*', (req, res) => {
-	console.log("herokuuuuuuu catchall")
-	console.log(path.join(__dirname + '/client', 'build', 'index.html'));
-  res.sendFile(path.join(__dirname + '/client', 'build', 'index.html'));
-})
+// app.get('/*', (req, res) => {
+// 	console.log("catchall")
+// 	console.log(path.join(__dirname + '/client', 'build', 'index.html'));
+//   res.sendFile(path.join(__dirname + '/client', 'build', 'index.html'));
+// })
 
 server.listen(port, ()=>{
 	console.log("Listening on "+ port)
