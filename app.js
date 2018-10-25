@@ -40,7 +40,7 @@ app.use(passport.session());
 
 if (process.env.NODE_ENV === 'production') {
 	console.log("inside prod");
-	app.use(express.static(path.join(__dirname, 'client','build')));
+	app.use(express.static(path.join(__dirname, '/client','build')));
 }
 
 
@@ -320,7 +320,7 @@ app.post("/addRep", (req,res)=>{
 
 app.get('*', (req, res) => {
 	console.log("herokuuuuuuu catchall")
-  res.sendFile(path.join(__dirname + 'client', 'build', 'index.html'))
+  res.sendFile(path.join(__dirname + '/client', 'build', 'index.html'))
 })
 
 function getIdOfMostRecentWorkout(connection, userId){
