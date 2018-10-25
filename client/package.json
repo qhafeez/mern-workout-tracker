@@ -32,7 +32,7 @@
   "devDependencies": {
     "redux-devtools-extension": "^2.13.5"
   },
-  "proxy":"localhost:4000",
+  "proxy":"https://workout-tracker-qh.herokuapp.com",
   "browserslist": [
     ">0.2%",
     "not dead",
