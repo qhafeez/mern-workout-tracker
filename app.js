@@ -19,6 +19,7 @@ const cookieSession = require("cookie-session");
 
 let app = express();
 app.use(bodyParser.json());
+app.use(express.static(__dirname));
 
 
 app.use(cookieSession({
@@ -40,7 +41,7 @@ app.use(passport.session());
 
 if (process.env.NODE_ENV === 'production') {
 	console.log("inside prod");
-	app.use(express.static('client/build'));
+	app.use(express.static(__dirname,+'client/build'));
 } 
 
 
