@@ -41,7 +41,7 @@ app.use(passport.session());
 
 if (process.env.NODE_ENV === 'production') {
 	console.log("inside prod");
-	app.use(express.static('client/build'));
+	app.use(express.static('client/build', {index:false}));
 } 
 
 
