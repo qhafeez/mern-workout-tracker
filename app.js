@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === 'production') {
 	app.use(express.static(path.join(__dirname,'client/build')));
 } 
 
-
+console.log("1");
 
 
 let connection =keys.connection;
