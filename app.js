@@ -750,6 +750,7 @@ let server = http.createServer(app,(req,res)=>{
 });
 
 app.get("/service-worker.js", (req, res) => {
+	console.log("service worker");
   res.sendFile(path.join(__dirname + "/client","build", "service-worker.js"));
 });
 
