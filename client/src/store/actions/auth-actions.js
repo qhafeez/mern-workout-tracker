@@ -55,7 +55,7 @@ return dispatch=>{
 	localStorage.removeItem("redirectPath");
 	localStorage.removeItem("refreshtPath");
 	console.log("logout");
-	window.location = "https://workout-tracker-qh.herokuapp.com/"
+	
 		return{
 
 		type:actionTypes.AUTH_LOGOUT,
