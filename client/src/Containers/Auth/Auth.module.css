@@ -1,4 +1,9 @@
 
+.googleButton{
+	
+	padding:10px 20px; 
+}
+
 .homepageContainer{
 
 	display: flex;

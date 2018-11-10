@@ -261,14 +261,14 @@ class Auth extends Component {
 					
 							{authRedirect}							
 							{errorMessage}
-						<form >
+						{/*<form >
 								{form}
 							<Button style={{margin:"0px"}} btnType="Success">Submit</Button>
 						</form>	
-							<Button style={{margin:"0px"}} btnType="Danger" clicked={this.switchAuthModeHandler}>SWITCH TO {this.state.isSignUp ? "Sign In" : "SIGN UP"}</Button>
+							<Button style={{margin:"0px"}} btnType="Danger" clicked={this.switchAuthModeHandler}>SWITCH TO {this.state.isSignUp ? "Sign In" : "SIGN UP"}</Button>*/}
 		
 						
-							<a href="/google">GOOGLE</a>
+							<a href="/google"><div className={classes.googleButton}>Login with Google</div></a>
 							
 					</div>
 					<div className={classes.appInfoContainer}>
