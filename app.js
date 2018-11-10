@@ -87,7 +87,7 @@ app.get("/auth/google/redirect", passport.authenticate("google"), (req,res)=>{
 });
 
 
-app.post("/logout",(req,response)=>{
+app.post("/logoutExp",(req,response)=>{
 
 	console.log("logout");
 	req.logout();
