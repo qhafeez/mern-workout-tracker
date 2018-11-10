@@ -76,7 +76,7 @@ class App extends Component {
 
   componentDidUpdate(nextProps, nextState){
     if(nextProps.isAuthenticated !== this.props.isAuthenticated && nextProps.isAuthenticated === null){
-      <Redirect to="/" />
+      window.location = "https://workout-tracker-qh.herokuapp.com/";
     }
   }
 
