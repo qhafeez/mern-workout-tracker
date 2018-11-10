@@ -1,8 +1,9 @@
 import React, {Component} from "react";
 import classes from "./NavigationItems.module.css";
 import NavigationItem from "./NavigationItem/NavigationItem";
-
+// import { connect } from "react-redux";
 // import {NavLink} from "react-router-dom";
+// import * as actions from "../../../store/actions/index";
 
 
 

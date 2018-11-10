@@ -23,7 +23,7 @@ class Logout extends Component {
 
 		return (
 
-				<Aux></Aux>
+				<div>logout</div>
 
 			);
 
