@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import classes from "./NavigationItems.module.css";
 import NavigationItem from "./NavigationItem/NavigationItem";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 // import {NavLink} from "react-router-dom";
-// import * as actions from "../../../store/actions/index";
+import * as actions from "../../../store/actions/index";
 
 
 
@@ -29,7 +29,7 @@ class NavigationItems extends Component  {
 				}
 				
 				{ 
-					this.props.isAuthenticated ?<NavigationItem link="/logout">Logout</NavigationItem>:null
+					this.props.isAuthenticated ?<div onClick={this.props.onLogout}>Logout</div>:null
 				}
 
 
@@ -43,6 +43,12 @@ class NavigationItems extends Component  {
 
 }
 
+const MapDispatchToProps = dispatch=>{
 
+	return{
+		onLogout: () => dispatch(actions.logout()),
+	}
 
-export default NavigationItems;
+}
+
+export default connect(null,MapDispatchToProps)(NavigationItems);
