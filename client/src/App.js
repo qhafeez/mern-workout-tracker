@@ -90,7 +90,9 @@ class App extends Component {
   
 let   routes= <Switch>
           
-              <Route path="/logout" component={Logout} />
+              <Route path="/logout" render={()=>(
+                this.props.isAuthenticated ? (<Logout/>) : (<Redirect to="/"
+               />) )}/>
              
               <Route path="/home" render={()=>(
                 this.props.isAuthenticated ? (<Home/>) : (<Redirect to="/"
