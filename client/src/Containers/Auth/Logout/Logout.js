@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as actions from "../../../store/actions/index";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import Aux from "../../../HOC/Aux/Aux";
 
 class Logout extends Component {
 
@@ -22,7 +23,7 @@ class Logout extends Component {
 
 		return (
 
-			// <Redirect to="/"  />
+				<Aux></Aux>
 
 			);
 
