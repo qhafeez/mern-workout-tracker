@@ -93,7 +93,7 @@ app.post("/logoutExp",(req,res)=>{
 	req.logout();
 	// res.redirect("/");
 	// connection.end();
-
+	//////
 })
 		  	
 app.post("/addExercise", (request, res)=>{
