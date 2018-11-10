@@ -49,21 +49,24 @@ export const logout = () =>{
 
 	axios.post("/logout").then(res=>{
 		console.log(res);
-	}).catch(err=>{
-		console.log(err);
-	})
-
-	localStorage.removeItem("token");
+		localStorage.removeItem("token");
 	localStorage.removeItem("expirationDate");
 	localStorage.removeItem("userId");
 	localStorage.removeItem("redirectPath");
 	localStorage.removeItem("refreshtPath");
 	console.log("logout");
-	return{
+		return{
 
 		type:actionTypes.AUTH_LOGOUT,
 
 	}
+
+	}).catch(err=>{
+		console.log(err);
+	})
+
+	
+	
 
 }
 

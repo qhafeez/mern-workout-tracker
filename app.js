@@ -90,6 +90,7 @@ app.get("/auth/google/redirect", passport.authenticate("google"), (req,res)=>{
 app.post("/logout",(req,response)=>{
 
 	console.log("logout");
+	req.logout();
 	// connection.end();
 
 })
