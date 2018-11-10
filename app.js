@@ -91,7 +91,7 @@ app.post("/logoutExp",(req,res)=>{
 
 	console.log("logout");
 	req.logout();
-	res.redirect("/");
+	// res.redirect("/");
 	// connection.end();
 
 })
