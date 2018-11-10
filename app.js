@@ -90,7 +90,8 @@ app.get("/auth/google/redirect", passport.authenticate("google"), (req,res)=>{
 app.post("/logout",(req,response)=>{
 
 	console.log("logout");
-	// req.logout();
+	req.logout();
+	res.redirect("http://workout-tracker-qh.herokuapp.com");
 	// connection.end();
 
 })

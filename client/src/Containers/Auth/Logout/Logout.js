@@ -22,7 +22,7 @@ class Logout extends Component {
 
 		return (
 
-			<Redirect to="/"  />
+			// <Redirect to="/"  />
 
 			);
 

@@ -46,7 +46,7 @@ export const authFail = (error) =>{
 
 export const logout = () =>{
 
-
+return dispatch=>{
 	axios.post("/logout").then(res=>{
 		console.log(res);
 		localStorage.removeItem("token");
@@ -65,7 +65,7 @@ export const logout = () =>{
 		console.log(err);
 	})
 
-	
+	}
 	
 
 }
