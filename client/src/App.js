@@ -74,6 +74,12 @@ class App extends Component {
 
   }
 
+  componentDidUpdate(nextProps, nextState){
+    if(nextProps.isAuthenticated !== this.props.isAuthenticated && nextProps.isAuthenticated === null){
+      <Redirect to="/" />
+    }
+  }
+
 // componentDidUpdate(prevProps, prevState){
   
 //   if(prevProps.isAuthenticated !== this.props.isAuthenticated && this.props.isAuthenticated === null){
