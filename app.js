@@ -753,7 +753,7 @@ let server = http.createServer(app,(req,res)=>{
 
 app.get("/service-worker.js", (req, res) => {
 	console.log("service workerss");
-  res.sendFile(path.join(__dirname + "client","build", "service-worker.js"));
+  res.sendFile(path.join(__dirname + "app/client","build", "service-worker.js"));
 });
 
 app.get('/*', (req, res) => {
@@ -761,7 +761,7 @@ app.get('/*', (req, res) => {
 	console.log(req.hostname);
 	console.log(req.path);
 	console.log(path.join(__dirname + '/client', 'build', 'index.html'));
-  res.sendFile(path.join(__dirname + 'app/client', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname + '/client', 'build', 'index.html'));
 })
 
 server.listen(port, ()=>{
