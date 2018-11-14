@@ -181,7 +181,7 @@ const query = firebase.database().ref("currentWorkouts").orderByChild("userId").
 
 		if(this.props.currentWorkout){
 
-			if(this.props.currentWorkout.workout !== ""){
+			if(this.props.currentWorkout.workout !== null){
 			// text=this.props.currentWorkout.notes;
 			
 			const date = {
