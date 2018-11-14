@@ -757,7 +757,7 @@ app.get("/service-worker.js", (req, res) => {
 });
 
 app.get('/*', (req, res) => {
-	console.log("catchall");
+	console.log("catchallll");
 	console.log(req.hostname);
 	console.log(req.path);
 	console.log(path.join(__dirname + '/client', 'build', 'index.html'));
