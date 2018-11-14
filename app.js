@@ -154,7 +154,7 @@ app.post("/deleteWorkout", (req,res)=>{
 })
 
 app.get("/redirected", (req, res)=>{
-	console.log("redirect");
+	console.log("redirecta");
 })
 
 
