@@ -183,7 +183,7 @@ const query = firebase.database().ref("currentWorkouts").orderByChild("userId").
 
 			if(this.props.currentWorkout.workout !== null){
 			// text=this.props.currentWorkout.notes;
-			
+			console.log(this.props);
 			const date = {
 						month:this.props.currentWorkout.date.month,
 						day:this.props.currentWorkout.date.day,
