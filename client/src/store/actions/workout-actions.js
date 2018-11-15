@@ -192,7 +192,7 @@ export const repHandler = (setId,token, workoutId) =>{
 
 				console.log(response);
 
-				dispatch(fetchCurrentSuccess(response.data))
+				dispatch(fetchCurrentSuccess(response.data[0]))
 
 			}).catch(err=>{
 				console.log(err);
