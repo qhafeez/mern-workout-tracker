@@ -45,6 +45,7 @@ export const fetchWorkoutHistory=(token)=>{
 			if(res.data===0){
 				return;
 			}
+			console.log(res.data);
 			dispatch(fetchHistorySuccess(res.data))
 
 		}).catch(err=>{
@@ -71,6 +72,7 @@ export const fetchCurrentWorkout = (token) =>{
 					console.log("no workout");
 					dispatch(fetchFail());
 				}else{
+					console.log(res.data);
 				dispatch(fetchCurrentSuccess(res.data));	
 				}
 				
