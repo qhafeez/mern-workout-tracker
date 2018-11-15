@@ -180,7 +180,7 @@ const query = firebase.database().ref("currentWorkouts").orderByChild("userId").
 		let exercises = <Spinner />;
 
 		if(this.props.currentWorkout){
-
+			console.log(this.props.currentWorkout);
 			if(this.props.currentWorkout.workout !== null){
 			// text=this.props.currentWorkout.notes;
 			console.log(this.props.currentWorkout);
