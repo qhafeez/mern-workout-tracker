@@ -19,7 +19,7 @@ class Auth extends Component {
 
 
 	componentDidMount(){
-		console.log("[auth cdmm]")
+		console.log("[auth cdm]")
 		if(this.props.isAuthenticated){
 
 
