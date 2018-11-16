@@ -325,6 +325,30 @@ app.post("/addRep", (req,res)=>{
 
 })
 
+app.post("/notesHandler", (req,res)=>{
+
+	if(req.session.passport.user.token === req.body.token ){
+
+		let workoutId = req.body.workoutId;
+		let notes = req.body.notes;
+		notesHandler(connection, workoutId, notes).then(response=>{
+
+			return getWorkout(connection, workoutId).then(response=>{
+
+				res.send(response);
+
+			})
+
+		}).catch(err=>{
+
+			res.send(err);
+
+		})
+
+	}
+
+})
+
 // if (process.env.NODE_ENV === 'production') {
 // 	app.use(express.static(path.join(__dirname, 'client','build')));
 // }
@@ -687,6 +711,23 @@ function getExercisesInWorkout(connection,workoutId){
 		})
 
 	})
+}
+
+notesHandler=(connection, workoutId, notes)=>{
+
+	return new Promise((resolve, reject)=>{
+
+		connection.query("UPDATE workouts SET notes = ? WHERE workoutId = ?", [notes, workoutId], (error, results)=>{
+			
+			if (error) return (error);
+
+			resolve(results);
+		
+		})
+
+	})
+
+
 }
 
 

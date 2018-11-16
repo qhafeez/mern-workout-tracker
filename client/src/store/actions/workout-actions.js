@@ -203,13 +203,18 @@ export const repHandler = (setId,token, workoutId) =>{
 
 }
 
-export const updateNotes = (notes) =>{
+export const updateNotes = (token, workoutId, notes) =>{
 
 		return dispatch =>{
 
-			console.log("dispatch updateNotes");
+			axios.post("/notesHandler", {token:token, workoutId: workoutId, notes:notes}).then(response=>{
 
-			firebase.database().ref().update(notes);
+				console.log(response);
+				dispatch(fetchCurrentWorkout(token));
+
+			}).catch(err=>{
+				console.log(err);
+			})
 
 		}
 

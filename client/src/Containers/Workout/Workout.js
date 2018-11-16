@@ -125,27 +125,29 @@ textField = () =>{
 
 }
 
-notesUpdateHandler = () =>{
+notesUpdateHandler = (token, workoutId, notes) =>{
 
 
 const query = firebase.database().ref("currentWorkouts").orderByChild("userId").equalTo(this.props.userId);
 
 			
 
-		  const workoutKey = this.props.currentWorkout.key;
+		 //  const workoutKey = this.props.currentWorkout.key;
 
-		 //  // console.log(firebase.database().ref(""))
+		 // //  // console.log(firebase.database().ref(""))
 
 
-		  const updatePath = "currentWorkouts/" + workoutKey + "/notes";
+		 //  const updatePath = "currentWorkouts/" + workoutKey + "/notes";
 
-		  const update ={
+		 //  const update ={
 
-		  				[updatePath] : this.state.notes
+		 //  				[updatePath] : this.state.notes
 
-		  }
+		 //  }
 
-		  this.props.notesUpdate(update);
+
+
+		  this.props.notesUpdate(this.props.token, this.props.currentWorkout.workoutId, this.state.notes);
 		  this.notesModalClose();
 
 		  // console.log(maxReps);
@@ -336,7 +338,7 @@ const mapDispatchToProps = dispatch =>{
 	return {
 
 		getWorkout: (token) => dispatch(actions.fetchCurrentWorkout(token)),
-		notesUpdate:(notes) => dispatch(actions.updateNotes(notes)),
+		notesUpdate:(token, workoutId, notes) => dispatch(actions.updateNotes(token, workoutId, notes)),
 		exerciseModalClose:() => dispatch(actions.exerciseModalClose()),
 		notesModalClose:() => dispatch(actions.notesModalClose()),
 		openExerciseModal: ()=>{dispatch(actions.exerciseModalShow())},
