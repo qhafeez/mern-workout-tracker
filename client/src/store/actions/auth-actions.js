@@ -44,6 +44,16 @@ export const authFail = (error) =>{
 	
 }
 
+export authLogout = ()=>{
+
+	return{
+
+				type:actionTypes.AUTH_LOGOUT
+
+			}
+
+}
+
 export const logout = () =>{
 
 	return dispatch=>{
@@ -56,12 +66,7 @@ export const logout = () =>{
 		localStorage.removeItem("refreshtPath");
 		console.log("logout");
 		
-			dispatch(return{
-
-				type:actionTypes.AUTH_LOGOUT,
-
-			}
-			);
+			dispatch(authLogout());
 
 		}).catch(err=>{
 			console.log(err);
