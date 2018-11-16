@@ -116,7 +116,11 @@ let   routes= <Switch>
                 this.props.isAuthenticated ? (<Workout/>) : (<Redirect to="/"
                />) )} />
              
-              <Route exact path="/"   component={Auth} />
+              <Route exact path="/" render={()=>(
+                !this.props.isAuthenticated ? (<Auth/>) : (<Redirect to="/home"
+               />) )} />
+
+              
           
            </Switch>
          
