@@ -44,7 +44,7 @@ export const authFail = (error) =>{
 	
 }
 
-export authLogout = ()=>{
+export const authLogout = ()=>{
 
 	return{
 
