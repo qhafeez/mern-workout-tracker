@@ -807,9 +807,9 @@ app.get('/*', (req, res) => {
 	console.log("catchallll");
 	console.log(req.hostname);
 	console.log(req.path);
-	// console.log(path.join(__dirname + '/client', 'build', 'index.html'));
- //  res.sendFile(path.join(__dirname + '/client', 'build', 'index.html'));
- res.redirect(req.path);
+	console.log(path.join(__dirname + '/client', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname + '/client', 'build', 'index.html'));
+ 
 })
 
 server.listen(port, ()=>{
