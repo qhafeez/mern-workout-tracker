@@ -128,7 +128,7 @@ textField = () =>{
 notesUpdateHandler = (token, workoutId, notes) =>{
 
 
-const query = firebase.database().ref("currentWorkouts").orderByChild("userId").equalTo(this.props.userId);
+// const query = firebase.database().ref("currentWorkouts").orderByChild("userId").equalTo(this.props.userId);
 
 			
 
