@@ -29,7 +29,7 @@ class NavigationItems extends Component  {
 				}
 				
 				{ 
-					this.props.isAuthenticated ?<NavigationItem link="/logoutExp">Log Out</NavigationItem>:null
+					this.props.isAuthenticated ?<div onClick={this.props.onLogout}>Logout</div>:null
 				}
 
 

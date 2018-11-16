@@ -47,7 +47,7 @@ export const authFail = (error) =>{
 export const logout = () =>{
 
 return dispatch=>{
-	axios.post("/logoutExp").then(res=>{
+	axios.get("/logoutExp").then(res=>{
 		console.log(res);
 		localStorage.removeItem("token");
 	localStorage.removeItem("expirationDate");
