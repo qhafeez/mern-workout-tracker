@@ -809,7 +809,7 @@ app.get('/*', (req, res) => {
 	console.log(req.path);
 	// console.log(path.join(__dirname + '/client', 'build', 'index.html'));
  //  res.sendFile(path.join(__dirname + '/client', 'build', 'index.html'));
- res.render(req.path);
+ res.redirect("http://workout-tracker-qh.herokuapp.com"+req.path);
 })
 
 server.listen(port, ()=>{
