@@ -56,11 +56,12 @@ export const logout = () =>{
 		localStorage.removeItem("refreshtPath");
 		console.log("logout");
 		
-			return{
+			dispatch(()=>{return{
 
-			type:actionTypes.AUTH_LOGOUT,
+				type:actionTypes.AUTH_LOGOUT,
 
-		}
+			}
+			});
 
 		}).catch(err=>{
 			console.log(err);
