@@ -46,27 +46,27 @@ export const authFail = (error) =>{
 
 export const logout = () =>{
 
-return dispatch=>{
-	axios.get("/logoutExp").then(res=>{
-		console.log(res);
-		localStorage.removeItem("token");
-	localStorage.removeItem("expirationDate");
-	localStorage.removeItem("userId");
-	localStorage.removeItem("redirectPath");
-	localStorage.removeItem("refreshtPath");
-	console.log("logout");
-	
-		return{
+	return dispatch=>{
+		axios.get("/logoutExp").then(res=>{
+			console.log(res);
+			localStorage.removeItem("token");
+		localStorage.removeItem("expirationDate");
+		localStorage.removeItem("userId");
+		localStorage.removeItem("redirectPath");
+		localStorage.removeItem("refreshtPath");
+		console.log("logout");
+		
+			return{
 
-		type:actionTypes.AUTH_LOGOUT,
+			type:actionTypes.AUTH_LOGOUT,
 
-	}
+		}
 
-	}).catch(err=>{
-		console.log(err);
-	})
+		}).catch(err=>{
+			console.log(err);
+		})
 
-	}
+		}
 	
 
 }
