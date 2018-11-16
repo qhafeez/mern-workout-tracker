@@ -54,7 +54,7 @@ class App extends Component {
     if (query.token) {
       // window.localStorage.setItem("token", query.token);
       this.props.onAuth(query.token);
-      this.props.history.push("/");
+      // this.props.history.push("/");
    } 
    
     if(localStorage.getItem("token")){
