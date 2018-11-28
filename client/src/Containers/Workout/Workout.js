@@ -23,7 +23,7 @@ import {arrows_horizontal_2} from 'react-icons-kit/ikons/arrows_horizontal_2';
 
 
 
-import {withRouter} from "react-router-dom";
+// import {withRouter} from "react-router-dom";
 import firebase from '../../fire.js';
 
 
