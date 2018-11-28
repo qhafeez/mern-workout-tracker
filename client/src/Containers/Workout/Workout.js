@@ -11,7 +11,7 @@ import Spinner from "../../Components/UI/Spinner/Spinner";
 import Button from "../../Components/UI/Button/Button";
 import Modal from "../../Components/UI/Modal/Modal";
 import WorkoutSelector from "../../Containers/WorkoutSelector/WorkoutSelector";
-import {Redirect} from "react-router-dom";
+import {Redirect, withRouter} from "react-router-dom";
 
 import { Icon } from "react-icons-kit";
 import {pen_3} from 'react-icons-kit/ikons/pen_3';
@@ -350,4 +350,4 @@ const mapDispatchToProps = dispatch =>{
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Workout);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Workout));
