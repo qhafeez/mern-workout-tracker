@@ -138,7 +138,7 @@ app.post("/deleteWorkout", (req,res)=>{
 		let userId = req.session.passport.user.userId;
 
 		
-
+		console.log("workoutId " + workoutId);
 
 		
 
