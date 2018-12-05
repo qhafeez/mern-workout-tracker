@@ -233,14 +233,15 @@ app.post("/retrieveCurrent",  (req, res)=>{
 
 					
 					//creating new workout
-					makeNewWorkout(connection,userId).then(response=>{
-						console.log("inside mnw");
-						console.log(response);
-						//retrieving new workout to send back to client
-						return getWorkout(connection, response.insertId)
-					}).then(response=>{
-						res.send(response[0])
-					})	
+					// makeNewWorkout(connection,userId).then(response=>{
+					// 	console.log("inside mnw");
+					// 	console.log(response);
+					// 	//retrieving new workout to send back to client
+					// 	return getWorkout(connection, response.insertId)
+					// }).then(response=>{
+					// 	res.send(response[0])
+					// })
+					res.send(response);	
 			
 				} else{
 

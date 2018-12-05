@@ -54,46 +54,46 @@ express=(e)=>{
 	// axiosInstance.post("/addExercise").then(res=>{
  //      console.log(res);
  //    }).catch(err=>console.log(err));
+//}
+
+
+
+// newWorkoutStart = () =>{
+// 		let token = this.props.token;
+// 		let date = new Date();
+// 		let currentDate = {
+// 			month:date.getMonth() + 1,
+// 			date:date.getDate(),
+// 			year:date.getFullYear(),
+// 			timestamp:date.getTime()
+// 		}
+
+		
+		
+			
+		
+// 		const itemsRef = firebase.database().ref("currentWorkouts");
+		
+// 		console.log(itemsRef);                    
+
+// 		const data = {
+// 			userId: this.props.userId,
+// 			workout:"",
+// 			notes:"",
+// 			date:currentDate,
+			
+			
+
+
+// 		}
+
+
+// 		itemsRef.push(data);
+
+
+		
+
 }
-
-
-
-newWorkoutStart = () =>{
-		let token = this.props.token;
-		let date = new Date();
-		let currentDate = {
-			month:date.getMonth() + 1,
-			date:date.getDate(),
-			year:date.getFullYear(),
-			timestamp:date.getTime()
-		}
-
-		
-		
-			
-		
-		const itemsRef = firebase.database().ref("currentWorkouts");
-		
-		console.log(itemsRef);                    
-
-		const data = {
-			userId: this.props.userId,
-			workout:"",
-			notes:"",
-			date:currentDate,
-			
-			
-
-
-		}
-
-
-		itemsRef.push(data);
-
-
-		
-
-	}
 
 
 render(){

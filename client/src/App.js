@@ -45,25 +45,25 @@ class App extends Component {
 
 
   componentDidMount(){
-    console.log("[app cdm] " );
+      console.log("[app cdm] " );
 
-     let query = queryString.parse(this.props.location.search);
-    
-    console.log(query);
+       let query = queryString.parse(this.props.location.search);
+      
+      console.log(query);
 
-    if (query.token) {
-      // window.localStorage.setItem("token", query.token);
-      this.props.onAuth(query.token);
-      // this.props.history.push("/");
-   } 
-   
-    if(localStorage.getItem("token")){
-      let lsToken = localStorage.getItem("token");
-      this.props.onAuth(lsToken);
-      this.props.fetchCurrentWorkout(lsToken);
-      this.props.fetchWorkoutHistory(lsToken)
-   }
-    console.log(this.props.isAuthenticated);
+      if (query.token) {
+        // window.localStorage.setItem("token", query.token);
+        this.props.onAuth(query.token);
+        // this.props.history.push("/");
+     } 
+     
+      if(localStorage.getItem("token")){
+        let lsToken = localStorage.getItem("token");
+        this.props.onAuth(lsToken);
+        this.props.fetchCurrentWorkout(lsToken);
+        this.props.fetchWorkoutHistory(lsToken)
+     }
+      console.log(this.props.isAuthenticated);
     
   
   
