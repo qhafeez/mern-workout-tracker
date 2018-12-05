@@ -183,7 +183,7 @@ notesUpdateHandler = (token, workoutId, notes) =>{
 
 		if(this.props.currentWorkout !== null){
 			console.log(this.props.currentWorkout);
-			if(this.props.currentWorkout.workout !== null){
+			if(this.props.currentWorkout.workout.length !== 0){
 			// text=this.props.currentWorkout.notes;
 			console.log(this.props.currentWorkout);
 			const date = {
