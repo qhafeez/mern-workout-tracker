@@ -40,7 +40,7 @@ closeWorkout = ()=>{
 
 
 	const workout = Object.keys(this.props.workout).map(exer =>{
-		return <CompletedExercise key={this.props.workout[exer].key} exercise={this.props.workout[exer].exercise} weight={this.props.workout[exer].weight}  sets={this.props.workout[exer].sets} path={this.props.path} />
+		return <CompletedExercise key={this.props.workout[exer].key} exercise={this.props.workout[exer].exerciseName} weight={this.props.workout[exer].weight}  sets={this.props.workout[exer].sets} path={this.props.path} />
 		
 
 	})

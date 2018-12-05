@@ -146,7 +146,7 @@ render(){
 
 			let exercise=mostRecent.workout[item]
 
-			return <SelectedExerciseRow key={exercise.exerciseID} id={exercise.exerciseID} exercise={exercise.exercise} weight={exercise.weight} sets={exercise.numberOfSets} reps={exercise.numberOfReps}   />
+			return <SelectedExerciseRow key={exercise.exerciseID} id={exercise.exerciseID} exercise={exercise.exerciseName} weight={exercise.weight} sets={exercise.numberOfSets} reps={exercise.maxReps}   />
 
 
 		});
