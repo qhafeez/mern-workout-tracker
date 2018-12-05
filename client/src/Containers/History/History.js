@@ -87,7 +87,7 @@ render(){
 
 
 		let currentWorkouts = <Spinner />;
-		if(this.props.completedWorkouts.length > 0 ){
+		if(this.props.completedWorkouts.length !== null ){
 
 
 

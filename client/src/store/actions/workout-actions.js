@@ -43,6 +43,7 @@ export const fetchWorkoutHistory=(token)=>{
 		axios.post("/retrieveHistory",{token:token}).then(res=>{
 			console.log(res);
 			if(res.data===0){
+				dispatch(fetchHistorySuccess());
 				return;
 			}
 			console.log(res.data);
