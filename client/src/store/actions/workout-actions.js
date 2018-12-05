@@ -46,7 +46,9 @@ export const fetchWorkoutHistory=(token)=>{
 				return;
 			}
 			console.log(res.data);
-			dispatch(fetchHistorySuccess(res.data))
+
+
+			dispatch(fetchHistorySuccess(res.data.reverse()));
 
 		}).catch(err=>{
 	
