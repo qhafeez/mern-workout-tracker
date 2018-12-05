@@ -271,6 +271,27 @@ app.post("/retrieveCurrent",  (req, res)=>{
 
 })
 
+app.post("/makeNewWorkout", (req,res)=>{
+
+	if(req.session.passport.user.token === req.body.token ){
+
+		let userId = req.session.passport.user.userId;
+
+		//creating new workout
+		makeNewWorkout(connection,userId).then(response=>{
+			console.log("inside mnw");
+			console.log(response);
+					//retrieving new workout to send back to client
+			return getWorkout(connection, response.insertId)
+					}).then(response=>{
+						res.send(response[0])
+					})
+
+	}
+
+
+})
+
 app.post("/completeWorkout", (req,res)=>{
 
 	if(req.session.passport.user.token === req.body.token ){

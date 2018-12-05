@@ -234,9 +234,7 @@ notesUpdateHandler = (token, workoutId, notes) =>{
 
 )
 
-		}
-
-		else{
+		}else{
 
 			this.props.openExerciseModal();
 

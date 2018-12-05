@@ -42,6 +42,7 @@ redirectHandler = () =>{
 	} else{
 
 		// this.newWorkoutStart();
+		this.props.makeNewWorkout(isAuthenticated);
 		this.props.history.push("/workout");
 
 	}
@@ -225,6 +226,7 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
 	return{
+		makeNewWorkout:()
 		fetchCurrentWorkout:(userId, aaa)=>{dispatch(actions.fetchCurrentWorkout(userId, aaa))},
 		fetchWorkoutHistory:(userId)=>{dispatch(actions.fetchWorkoutHistory(userId))}
 	}

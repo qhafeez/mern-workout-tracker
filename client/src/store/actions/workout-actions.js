@@ -59,6 +59,20 @@ export const fetchWorkoutHistory=(token)=>{
 
 }
 
+export const createNewWorkout=(token)=>{
+		return dispatch=>{
+			dispatch(fetchStart());
+			axios.post("/makeNewWorkout", {token:token}).then(res=>{
+				console.log(res);
+				dispatch(fetchCurrentSuccess());
+
+			}).catch(err=>{
+				console.log(err);
+			})
+
+		}
+}
+
 export const fetchCurrentWorkout = (token) =>{
 	console.log(token);
 
