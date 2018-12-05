@@ -11,7 +11,8 @@ export {
 	notesModalClose,
 	completeWorkout,
 	addExercise,
-	deleteWorkout
+	deleteWorkout,
+	createNewWorkout
 	
 } from "./workout-actions";
 
