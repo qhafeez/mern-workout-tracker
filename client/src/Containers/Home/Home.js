@@ -42,7 +42,7 @@ redirectHandler = () =>{
 	} else{
 
 		// this.newWorkoutStart();
-		this.props.makeNewWorkout(isAuthenticated);
+		this.props.makeNewWorkout(this.props.isAuthenticated);
 		this.props.history.push("/workout");
 
 	}
