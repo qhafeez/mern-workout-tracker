@@ -226,7 +226,7 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
 	return{
-		makeNewWorkout:()
+		makeNewWorkout:(token)=>{dispatch(actions.createNewWorkout(token))},
 		fetchCurrentWorkout:(userId, aaa)=>{dispatch(actions.fetchCurrentWorkout(userId, aaa))},
 		fetchWorkoutHistory:(userId)=>{dispatch(actions.fetchWorkoutHistory(userId))}
 	}
