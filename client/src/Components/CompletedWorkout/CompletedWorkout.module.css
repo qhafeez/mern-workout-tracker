@@ -7,14 +7,45 @@
 	box-shadow: 2px 2px 2px lightgray;
 	justify-content: center;
 	box-sizing: content-box;
-	cursor: pointer;
+	/*cursor: pointer;*/
+	
 }
 
 .dateContainer{
 
 	display: flex;
 	justify-content: center;
-	/*padding-bottom: 10px;*/
+	
 	font-size:20px;
+	padding-bottom: 10px;
+	font-family: arial;
 
+}
+
+.closeContainer{
+	display: flex;
+	justify-content: flex-end;
+	font-size: 20px;
+	cursor:pointer;
+}
+
+.notesLabel{
+	display: flex;
+	justify-content: center;
+	padding:10px;
+	font-size: 20px;
+}
+
+.notes{
+	
+	border:10px solid #F5F5F5;
+	line-height: 1.8;
+}
+
+.deleteContainer{
+	display:flex; 
+	justify-content:center; 
+	padding:20px; 
+	color:red;
+	cursor:pointer;
 }

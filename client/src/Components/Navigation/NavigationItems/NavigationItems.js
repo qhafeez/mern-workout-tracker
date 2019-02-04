@@ -27,10 +27,14 @@ class NavigationItems extends Component  {
 				{
 					this.props.isAuthenticated ? <NavigationItem link="/history">Workout History</NavigationItem>:null
 				}
-				
-				{ 
-					this.props.isAuthenticated ?<div onClick={this.props.onLogout}>Logout</div>:null
+					
+				{
+					this.props.isAuthenticated ? <NavigationItem link="/logout">Logout</NavigationItem>:null
 				}
+
+				{ /*
+					this.props.isAuthenticated ?<div onClick={this.props.onLogout}>Logout</div>:null
+				*/}
 
 
 

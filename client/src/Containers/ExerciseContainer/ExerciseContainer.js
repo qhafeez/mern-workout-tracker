@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import classes from "./ExerciseContainer.module.css";
 import SetComponent from "../../Components/SetComponent/SetComponent";
 import {connect} from "react-redux";
-import firebase from "../../fire.js";
+// import firebase from "../../fire.js";
 import * as actions from "../../store/actions/index.js";
 
 class ExerciseContainer extends Component {
@@ -15,59 +15,114 @@ state={
 	sets:this.props.sets,
 	repsPerSet:this.props.reps,
 	exId:this.props.exId,
-	path:this.props.path
+	path:this.props.path,
+	display:false
 
 
 }
 
 
-// componentDidUpdate(prevProps, prevState){
 
-// 	if(prevProps.sets !== this.props.sets){
+componentDidMount(){
 
+
+	let currentExercise = this.props.currentWorkout.workout[this.props.index];
+	let completedSets = currentExercise.sets.filter(set=>{
+			return set.completed === 1;
+		}).length;
+
+	if(completedSets === currentExercise.sets.length){
+		this.setState({
+			display:true
+		});
+	}
+
+}
+
+componentDidUpdate(prevProps){
+
+// 	let currentExercise = this.props.currentWorkout.workout[this.props.index];
+
+// 	if(prevProps.currentWorkout.workout[this.props.index].sets !== currentExercise.sets){
+// 		console.log("hello");
+	
+// 	let completedSets = currentExercise.sets.filter(set=>{
+// 			return set.completed === 1;
+// 		}).length;
+// 	if(completedSets === currentExercise.sets.length){
+
+// 		this.setTimeoutId =	setTimeout(()=>{
 // 			this.setState({
-
-// 				sets:this.props.sets
-
-// 			})
-
+// 			display:true
+// 		});	
+// 		}, 500)
+		
 // 	}
-
-
 // }
 
+}
 
 
-// static getDerivedStateFromProps(props, state){
+removeCompletedDisplay=()=>{
 
-// 	if(props.sets !== this.props.sets){
+	this.setState({
+		display:false
+	})
 
-// 		this.props.sets = props.sets
-// 	}
-
-// }
+}
 
 clicked=(setId)=>{
 	//this will be the function that increases the rep by one
-	console.log(this.props.workoutId);
+	// console.log(this.props.workoutId);
 	this.props.repHandler(setId, this.props.token, this.props.workoutId);
 
+	//this delay was added to make sure the completed sets variable contains the most current 
+	//data.  without it, it will execute before the rephandler method finishes.
+		setTimeout(()=>{
+
+					let currentExercise = this.props.currentWorkout.workout[this.props.index];
+			let completedSets = currentExercise.sets.filter(set=>{
+					return set.completed === 1;
+				}).length;
+
+			if(completedSets === currentExercise.sets.length){
+
+				if(this.setTimeoutId){
+					
+					clearTimeout(this.setTimeoutId);
+					console.log("if " + this.setTimeoutId);
+				}
+				this.setTimeoutId =	setTimeout(()=>{
+					this.setState({
+					display:true
+				});	
+				}, 500)
+				console.log("if " + this.setTimeoutId);
+
+
+		}},100)
+		
+	
+
+
+	
+
+	
 
 }
 
-render(){
-	console.log(this.props);
 
-	let numberOfReps = this.props.reps;
-	
-		// console.log(typeof(numberOfReps));
+
+render(){
+
+
+
+
 
 
 		//the index prop allows us to access the specific exercise in tthe array of 
 		//exercises		
 	let currentExercise = this.props.currentWorkout.workout[this.props.index];
-	
-		console.log(currentExercise);
 
 	let setComponents = Object.keys(currentExercise.sets).map(set=>{
 
@@ -78,7 +133,8 @@ render(){
 					repsPerSet={currentExercise.maxReps} 
 					repsCompleted={this.props.sets[set].reps} 
 					exerciseId={currentExercise.exerciseId} 
-					setId={this.props.sets[set].setId} 
+					setId={this.props.sets[set].setId}
+					setCompleted={this.props.sets[set].completed} 
 					index={this.props.index}
 					clicked={()=>{this.clicked(this.props.sets[set].setId) }}
 					/>
@@ -111,6 +167,9 @@ render(){
 			setContainerClasses.push(classes.fiveSet);
 			break;
 
+		default:
+			break;
+
 
 	}
 
@@ -119,29 +178,36 @@ render(){
 	return(
 
 				<div className={classes.individualExerciseContainer}>
-					
-							<div className={classes.exerInfoContainer}>
-								<div>{this.props.exerciseName}</div>
-									<div className={classes.setsWeightContainer}>
-										<div className={classes.setsRepsContainer}>{this.props.numberOfSets} x {this.props.reps}</div>
-										<div>{this.props.weight} lbs</div>
+
+							<div>
+								<div className={classes.exerInfoContainer}>
+									<div>{this.props.exerciseName}</div>
+										<div className={classes.setsWeightContainer}>
+											<div className={classes.setsRepsContainer}>{this.props.numberOfSets} x {this.props.reps}</div>
+											<div>{this.props.weight} lbs</div>
+									</div>
+								</div>
+								<div className={classes.setSection} >
+									<div className={setContainerClasses.join(" ") /*flex-direction row*/}>
+
+
+												{setComponents}								
+										
+										
+										
+
+									</div>
 								</div>
 							</div>
-							<div className={classes.setSection} >
-								<div className={setContainerClasses.join(" ") /*flex-direction row*/}>
-
-
-											{setComponents}								
-									
-									
-									
-
+							<div onClick={this.removeCompletedDisplay} className={classes.completedSet} style={this.state.display ? {
+								display:"flex",
+								justifyContent:"center"
+							}:null}>
+								<div className={classes.completedSetInner}>
+									Completed {this.props.exerciseName}
 								</div>
 							</div>
-							<div className={classes.removeContainer}>
-								
-								
-							</div>
+							
 							
 						</div>
 

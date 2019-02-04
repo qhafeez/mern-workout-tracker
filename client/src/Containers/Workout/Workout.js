@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import classes from "./Workout.module.css";
-import axios from "../../axios-db";
+// import axios from "../../axios-db";
 import {connect} from "react-redux";
 import * as actions from "../../store/actions/index.js";
-import Input from "../../Components/UI/Input/Input";
+// import Input from "../../Components/UI/Input/Input";
 // import SetComponent from "../../Components/SetComponent/SetComponent";
 import ExerciseContainer from "../ExerciseContainer/ExerciseContainer"; 
 import Aux from "../../HOC/Aux/Aux";
@@ -13,18 +13,18 @@ import Modal from "../../Components/UI/Modal/Modal";
 import WorkoutSelector from "../../Containers/WorkoutSelector/WorkoutSelector";
 import {Redirect, withRouter} from "react-router-dom";
 
-import { Icon } from "react-icons-kit";
-import {pen_3} from 'react-icons-kit/ikons/pen_3';
-import {plus} from 'react-icons-kit/ikons/plus';
-import {square_ok} from 'react-icons-kit/ikons/square_ok';
-import {arrows_horizontal_2} from 'react-icons-kit/ikons/arrows_horizontal_2';
+// import { Icon } from "react-icons-kit";
+// import {pen_3} from 'react-icons-kit/ikons/pen_3';
+// import {plus} from 'react-icons-kit/ikons/plus';
+// import {square_ok} from 'react-icons-kit/ikons/square_ok';
+// import {arrows_horizontal_2} from 'react-icons-kit/ikons/arrows_horizontal_2';
 
 
 
 
 
 // import {withRouter} from "react-router-dom";
-import firebase from '../../fire.js';
+// import firebase from '../../fire.js';
 
 
 
@@ -45,7 +45,7 @@ class Workout extends Component {
 
 componentDidMount(){
 	
- 
+ 	this.props.getWorkout(this.props.token);
 	
 	if(!this.props.currentWorkout){ 	
 	 		
@@ -60,7 +60,7 @@ componentDidMount(){
 	}
 
 
-	}
+}
 
 componentDidUpdate(prevProps, prevState){
 
@@ -237,7 +237,7 @@ notesUpdateHandler = (token, workoutId, notes) =>{
 		}else{
 
 			//this.props.openExerciseModal();
-			exercises = <div>Click the 'Add Exercise" button below to add an exercise</div>
+			exercises = <div className={classes.empty}>Click the 'Add Exercise" button below to add an exercise</div>
 
 
 		}

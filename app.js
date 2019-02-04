@@ -23,8 +23,11 @@ app.use(express.static(__dirname));
 
 
 app.use(cookieSession({
-	maxAge:24 * 60 * 60 * 1000,
-	keys:[keys.session.cookieKey]	
+	//below equals 2 hours 
+	maxAge:120*60 * 1000,
+	// maxAge:5000,
+	keys:[keys.session.cookieKey],
+	httpOnly:false	
 }));
 
 
@@ -47,7 +50,7 @@ if (process.env.NODE_ENV === 'production') {
 console.log("1");
 
 
-let connection =keys.connection;
+let connection = keys.connection;
 
 //this prevents the database connection from closing
 //by querying this meaningless query every five seconds
@@ -87,15 +90,27 @@ app.get("/auth/google/redirect", passport.authenticate("google"), (req,res)=>{
 	console.log("isinde redirect");
 	console.log(req.user)
 	
-	res.redirect("http://workout-tracker-qh.herokuapp.com/?token="+req.user.token);
+	// res.redirect("http://workout-tracker-qh.herokuapp.com/?token="+req.user.token);
 	// res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+	res.redirect("http://localhost:3000/?token="+req.user.token);
 
 });
+
+app.get("/sessCheck", (req,res)=>{
+
+	let exists = req.session;
+	console.log("exists");
+	console.log(exists);
+
+	res.send(exists);
+
+})
 
 
 app.get("/logoutExp",(req,res)=>{
 
 	console.log("logout");
+	req.session=null;
 	req.logout();
 	res.redirect("/");
 	// connection.end();
@@ -160,42 +175,100 @@ app.post("/deleteWorkout", (req,res)=>{
 })
 
 app.get("/redirected", (req, res)=>{
-	console.log("redirecta");
+	// console.log("redirecta");
+})
+
+
+
+app.post("/retrieveWorkout", (req,res)=>{
+
+	if(req.session.passport.user.token === req.body.token){
+		// let userId = req.session.passport.user.userId;
+		let workoutId = req.body.workoutId;
+
+
+		checkIfWorkoutExists(connection, workoutId).then(response=>{
+
+			console.log("inside checkIfWorkoutExists")
+			if(response[0].exist === 1){
+
+				return getWorkout(connection, workoutId).then(response=>{
+
+			   res.send(response);
+
+		  }).catch(err=>{
+
+		 		console.log("/retrieveWorkout");
+				console.log(err);
+
+			})
+
+		} else{
+
+			res.send(response[0])
+		
+		}
+
+
+	})
+
+
+
+		
+
+} 
 })
 
 
 app.post("/retrieveHistory", (req,res)=>{
-
-	if(req.session.passport.user.token === req.body.token ){
+	console.log(req.session);
+		
+		if(req.session.passport.user.token === req.body.token){
 		let userId = req.session.passport.user.userId;
 
 		console.log(userId);
+		
 		workoutHistory(connection, userId).then(response=>{
+		
 			let arr=[];
+		
 			for(let i=0; i<response.length; i++){
 				arr[i]=response[i].workoutId;
 
 			}
+		
 			// console.log(arr);
 			if(response.length ===0){
 				res.send("0");
 			}
-			console.log("inside workouthistory then");
-			console.log(arr);
+		
+			// console.log("inside workouthistory then");
+			// console.log(arr);
+		
 			return getExercisesInWorkout(connection, arr).then(response=>{
-				console.log("inside wh geiw");
+				// console.log("inside wh geiw");
 				// console.log(response);
 				return getWorkout(connection, arr).then(response=>{
-					console.log("sldkfjhasldj")
+	
+					// console.log("sldkfjhasldj")
 					res.send(response);
+	
 				})
+	
 			})
 	
 		}).catch(err=>{
+	
 			console.log(err);
+	
 		})
 
-	}	
+	} else {
+		
+		res.send("not logged in anymore");
+	
+	}
+		
 
 })
 
@@ -206,14 +279,14 @@ app.post("/retrieveCurrent",  (req, res)=>{
 
 		if(req.session.passport.user.token === req.body.token ){
 			let userId = req.session.passport.user.userId;
-			console.log(userId);
+			// console.log(userId);
 
 
 			//checking to see if any incomplete workouts exist, if one does, it will be retrieved.
 			//if not, one will be created
 			checkForIncompleteWorkout(connection, userId).then(response=>{
-				console.log("inside checkForIncompleteWorkout")
-				console.log(response.length);
+				// console.log("inside checkForIncompleteWorkout")
+				// console.log(response.length);
 				if(response.length < 1){
 						
 					// 	console.log("inside if");
@@ -248,8 +321,8 @@ app.post("/retrieveCurrent",  (req, res)=>{
 						let workoutId = response[0].workoutId;
 
 						getWorkout(connection, workoutId).then(response=>{
-							console.log("inside else gw");
-							console.log(response);
+							// console.log("inside else gw");
+							// console.log(response);
 							res.send(response[0]);
 						}).catch(err=>{
 							console.log(err)
@@ -279,8 +352,8 @@ app.post("/makeNewWorkout", (req,res)=>{
 
 		//creating new workout
 		makeNewWorkout(connection,userId).then(response=>{
-			console.log("inside mnw");
-			console.log(response);
+			// console.log("inside mnw");
+			// console.log(response);
 					//retrieving new workout to send back to client
 			return getWorkout(connection, response.insertId)
 					}).then(response=>{
@@ -297,7 +370,7 @@ app.post("/completeWorkout", (req,res)=>{
 	if(req.session.passport.user.token === req.body.token ){
 
 		let workoutId = req.body.workoutId;
-		console.log(workoutId);
+		// console.log(workoutId);
 		completeWorkout(connection, workoutId).then(response=>{
 			res.send(response);
 		}).catch(err=>{
@@ -326,7 +399,7 @@ app.post("/addRep", (req,res)=>{
 	if(req.session.passport.user.token === req.body.token ){
 		let setId = req.body.setId;
 		let workoutId = req.body.workoutId;
-		console.log(workoutId);
+		// console.log(workoutId);
 		addRep(connection, setId).then(response=>{
 	
 			
@@ -394,13 +467,39 @@ function getIdOfMostRecentWorkout(connection, userId){
 
 }
 
+function checkIfWorkoutExists(connection, workoutId){
+
+	return new Promise((resolve,reject)=>{
+
+		connection.query("SELECT COUNT(*) AS exist FROM workouts WHERE workoutId = ?",workoutId,(error,results)=>{
+
+			if(error) reject(error);
+
+			resolve(results);
+
+		})
+
+	})
+
+}
+
 
 async function getWorkout(connection, workoutId){
 
 
 
 	let arr;
+
+
 	if(typeof workoutId === "number"){
+		/*
+			if workoutId is a number, that means
+			only one workout has been retrieved. 
+			the function arrOfWorkouts maps over an array and that is
+			why we put workoutId into an array, so that it can be used in that function 
+
+		*/
+		
 		arr = [workoutId];
 	} else{
 
@@ -448,10 +547,10 @@ async function getWorkout(connection, workoutId){
 					    return getExercisesInWorkout(connection, a);
 					}).then(results=>{
 
-								console.log("inside geiw in gww");
-								console.log(results);
-								console.log("results length");
-								console.log(results.length);
+								// console.log("inside geiw in gww");
+								// console.log(results);
+								// console.log("results length");
+								// console.log(results.length);
 
 								//this if statement return the workout object
 								//with the date defined and an empty workout array
@@ -488,7 +587,7 @@ async function getWorkout(connection, workoutId){
 								exerciseObject.exerciseName = results[i].exerciseName;
 								exerciseObject.weight = results[i].weight,
 								exerciseObject.maxReps = results[i].maxReps,
-								exerciseObject.sets.push({setId:results[i].setId, reps:results[i].reps});
+								exerciseObject.sets.push({setId:results[i].setId, reps:results[i].reps, completed:results[i].completed});
 								// console.log(exerciseObject.exerciseId + "  "+ results[i].exerciseId);
 								
 								// console.log(exerciseObject);
@@ -520,7 +619,7 @@ async function getWorkout(connection, workoutId){
 							//sending workout back to client
 								return workoutObject;	
 
-								console.log(arrOfWorkouts);
+								// console.log(arrOfWorkouts);
 								
 							
 
@@ -674,7 +773,15 @@ addRep=(connection, setId)=>{
 	
 	return new Promise((resolve,reject)=>{
 
-		connection.query("UPDATE sets SET reps= CASE WHEN reps < (SELECT maxReps FROM (SELECT * FROM sets) AS temp WHERE setId = ?) THEN reps+1 ELSE 0 END WHERE setId = ?", [setId,setId], (error,results)=>{
+		// connection.query("UPDATE sets SET reps= CASE WHEN reps < (SELECT maxReps FROM (SELECT * FROM sets) AS temp WHERE setId = ?) THEN reps+1 ELSE 0 END WHERE setId = ?", [setId,setId], (error,results)=>{
+
+		// 	if(error) return reject(error);
+
+		// 	resolve(results);
+
+		// })	
+
+		connection.query("UPDATE sets SET completed=1, reps= CASE WHEN reps IS NULL OR reps =1 THEN (SELECT maxReps FROM (SELECT * FROM sets) AS temp WHERE setId = ?)  ELSE reps-1  END WHERE setId = ?", [setId,setId], (error,results)=>{
 
 			if(error) return reject(error);
 
@@ -722,7 +829,7 @@ function getExercisesInWorkout(connection,workoutId){
 
 	return new Promise((resolve,reject)=>{
 
-		connection.query("SELECT workouts.workoutId, workouts.notes, exercisesPerWorkout.exerciseId, exercisesPerWorkout.exerciseName, exercisesPerWorkout.weight, sets.setId, sets.reps, sets.maxReps FROM workouts JOIN exercisesPerWorkout on workouts.workoutId = exercisesPerWorkout.workoutId JOIN  sets ON exercisesPerWorkout.exerciseId = sets.exerciseId WHERE "+q, wid,(error, results)=>{
+		connection.query("SELECT workouts.workoutId, workouts.notes, exercisesPerWorkout.exerciseId, exercisesPerWorkout.exerciseName, exercisesPerWorkout.weight, sets.setId, sets.reps, sets.maxReps, sets.completed FROM workouts JOIN exercisesPerWorkout on workouts.workoutId = exercisesPerWorkout.workoutId JOIN  sets ON exercisesPerWorkout.exerciseId = sets.exerciseId WHERE "+q, wid,(error, results)=>{
 
 			if (error) return (error);
 			// console.log(results);

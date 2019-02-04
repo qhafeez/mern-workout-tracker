@@ -8,16 +8,29 @@
 .selectorContainer{
 
 	display: flex;
+	flex-direction: column;
 	justify-content: space-between;
 	width:100%;
 	/*margin:auto;*/
-	flex-direction: column;
+	
 	background-color: #F5F5F5;
 	/*margin-top:-17px;*/
-	/*height:calc(100vh - 56px);*/
-	/*position: relative;*/
+	height:calc(100vh - 56px);
 	overflow-x: hidden;
+	position:relative;
+	/*justify-items:center;*/
+}
 
+.empty{
+	display: flex;
+	justify-content: center;
+	padding: 20px 10px;
+	border-radius:5px;
+	font-size: 20px;
+	background-color: white;
+	/*align-self: bottom;*/
+	position:absolute;
+	top:25%;
 }
 
 .exercisesContainer{

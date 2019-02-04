@@ -1,11 +1,12 @@
 import * as actionTypes from "./actionTypes";
+import * as authActions from "./auth-actions";
 
 /*this is a new axios instance.  it is not the one
   from axios-orders.  we are doing this because
   we don't use the baseURL that is set up in that one	
 */
 import axios from "axios";
-import firebase from '../../fire.js';
+// import firebase from '../../fire.js';
 
 
 export const fetchStart = () =>{
@@ -39,9 +40,9 @@ export const fetchWorkoutHistory=(token)=>{
 
 	return dispatch =>{
 
-
+		
 		axios.post("/retrieveHistory",{token:token}).then(res=>{
-			console.log(res);
+			console.log(res.data);
 			if(res.data===0){
 				dispatch(fetchHistorySuccess(null));
 				return;
@@ -53,7 +54,7 @@ export const fetchWorkoutHistory=(token)=>{
 
 		}).catch(err=>{
 	
-			console.log(err);
+			dispatch(authActions.logout());
 	
 		})
 
@@ -71,6 +72,7 @@ export const createNewWorkout=(token)=>{
 
 			}).catch(err=>{
 				console.log(err);
+				dispatch(authActions.logout());
 			})
 
 		}
@@ -94,7 +96,8 @@ export const fetchCurrentWorkout = (token) =>{
 				}
 				
 			}).catch(err=>{
-				console.log(err);
+				console.log(err.message);
+				dispatch(authActions.logout());
 			})
 
 	}
@@ -114,6 +117,67 @@ export const fetchHistorySuccess = (history) =>{
 
 }
 
+export const fetchOneWorkoutSuccess = (oneWorkout) =>{
+
+	return {
+
+		type:actionTypes.FETCH_ONE_WORKOUT_SUCCESS,
+		oneWorkout: oneWorkout
+
+	}
+
+}
+
+export const fetchOneWorkoutFail = () =>{
+
+	return {
+
+		type:actionTypes.FETCH_ONE_WORKOUT_FAIL,
+		oneWorkout: 0
+
+	}
+
+}
+
+export const resetOneWorkoutToNull =()=>{
+
+	return {
+		type:actionTypes.RESET_ONE_WORKOUT_NULL,
+		oneWorkout:null
+	}
+
+}
+
+
+
+
+
+
+
+//retrieves one workout for the CompletedWorkoutDisplay component
+export const fetchOneWorkout =(token, workoutId)=>{
+
+	return dispatch=>{
+
+		axios.post("/retrieveWorkout", {token:token, workoutId:workoutId}).then(response=>{
+
+			console.log(response);
+			if(!response.data.hasOwnProperty("exist")){
+				dispatch(fetchOneWorkoutSuccess(response.data));	
+			} else{
+				dispatch(fetchOneWorkoutFail())
+			}
+			
+
+		}).catch(err=>{
+			console.log(err);
+			dispatch(authActions.logout());
+		})
+
+	}
+
+}
+
 
 export const deleteWorkout=(workoutId, token)=>{
 
@@ -125,6 +189,8 @@ export const deleteWorkout=(workoutId, token)=>{
 			console.log(response);
 				dispatch(fetchWorkoutHistory(token));
 
+		}).catch(err=>{
+			dispatch(authActions.logout());
 		})
 
 	}
@@ -154,6 +220,9 @@ export const addExercise=(token, exObj)=>{
 			dispatch(addExerciseSuccess());
 			dispatch(fetchCurrentWorkout(token))
 			
+		}).catch(err=>{
+			console.log(err);
+			dispatch(authActions.logout());
 		})
 
 
@@ -192,6 +261,7 @@ export const completeWorkout=(workoutId,token)=>{
 		}).catch(err=>{
 			
 			console.log(err);
+			dispatch(authActions.logout());
 		
 		})
 
@@ -210,9 +280,11 @@ export const repHandler = (setId,token, workoutId) =>{
 				console.log(response);
 
 				dispatch(fetchCurrentSuccess(response.data[0]))
+				
 
 			}).catch(err=>{
 				console.log(err);
+				dispatch(authActions.logout());
 			})
 
 		}
@@ -231,6 +303,7 @@ export const updateNotes = (token, workoutId, notes) =>{
 
 			}).catch(err=>{
 				console.log(err);
+				dispatch(authActions.logout());
 			})
 
 		}

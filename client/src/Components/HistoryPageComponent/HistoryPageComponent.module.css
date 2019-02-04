@@ -1,0 +1,19 @@
+.mainContainer{
+	display:flex;
+	justify-content: space-between;
+	padding:10px 50px;
+	font:20px arial;
+	background-color: white;
+	margin:15px 5px 0px 5px;
+	border-radius:5px;
+	box-shadow: 2px 2px 2px lightgray;
+	cursor: pointer;
+
+
+}
+
+ a{
+	color:black;
+}
+
+

@@ -12,7 +12,9 @@ export {
 	completeWorkout,
 	addExercise,
 	deleteWorkout,
-	createNewWorkout
+	createNewWorkout,
+	fetchOneWorkout,
+	resetOneWorkoutToNull
 	
 } from "./workout-actions";
 

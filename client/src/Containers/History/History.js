@@ -2,13 +2,16 @@ import React, { Component } from "react";
 import {connect} from "react-redux";
 import classes from "./History.module.css";
 import Spinner from  "../../Components/UI/Spinner/Spinner";
-import CompletedWorkout from  "../../Components/CompletedWorkout/CompletedWorkout";
+import HistoryPageComponent from "../../Components/HistoryPageComponent/HistoryPageComponent";
+// import CompletedWorkout from  "../../Components/CompletedWorkout/CompletedWorkout";
 // import logic from "jw-paginate";
 import Pagination from "jw-react-pagination";
 import * as actions from "../../store/actions/index.js";
 import Aux from "../../HOC/Aux/Aux";
+import CompletedWorkoutDisplay from "../../Components/CompletedWorkoutDisplay/CompletedWorkoutDisplay";
+import {Route, Link} from "react-router-dom";
 
-import firebase from "../../fire.js";
+// import firebase from "../../fire.js";
 
 class History extends Component {
 
@@ -103,17 +106,25 @@ render(){
 			currentWorkouts = this.state.pageOfItems.map(exerList =>{
 
 				
+				let url = "/history/" + exerList.workoutId;
 
 
+				// return <Link to={url}><CompletedWorkout month={exerList.date.month} 
+				// 						 day={exerList.date.day} 
+				// 						 year={exerList.date.year}  
+				// 						 workout={exerList.workout}
+				// 						 path={exerList.key}
+				// 						 workoutId={exerList.workoutId}
+				// 						 clicked={()=>{this.deleteWorkout(exerList.workoutId)}} 
+				// 						 /></Link>
 
-				return <CompletedWorkout month={exerList.date.month} 
+				return <Link style={{ textDecoration: 'none' }} to={url}><HistoryPageComponent 
+										month={exerList.date.month} 
 										 day={exerList.date.day} 
 										 year={exerList.date.year}  
-										 workout={exerList.workout}
-										 path={exerList.key}
+										 numExercises={exerList.workout}
 										 workoutId={exerList.workoutId}
-										 clicked={()=>{this.deleteWorkout(exerList.workoutId)}} 
-										 />
+									/></Link>										 
 		
 					// Object.keys(exerList.workout).map(indExer=>{
 
@@ -147,10 +158,9 @@ console.log(this.props.completedWorkouts);
 						</div>
 
 						{currentWorkouts}
-
-						
-					  
+						<Route path="/history/:id" exact component={CompletedWorkoutDisplay}/>
 					</div>
+					
 					<div className={classes.paginationContainer}>
 						<Pagination items={this.state.completedWorkouts} onChangePage={this.onChangePage} pageSize={5} />
 					</div>

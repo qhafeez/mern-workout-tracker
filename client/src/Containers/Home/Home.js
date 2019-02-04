@@ -1,3 +1,4 @@
+
 import React, {Component} from "react";
 import { Icon } from "react-icons-kit";
 import {circle_plus, circle_right} from "react-icons-kit/ikons";
@@ -9,7 +10,6 @@ import {connect} from "react-redux";
 import * as actions from "../../store/actions/index.js";
 import SelectedExercisesTable from "../../Components/SelectedExercisesTable/SelectedExercisesTable";
 import SelectedExerciseRow from "../../Components/SelectedExercisesTable/SelectedExerciseRow/SelectedExerciseRow";
-import firebase from "../../fire.js";
 import axiosInstance from "axios";
 
 
@@ -119,7 +119,7 @@ render(){
 						
 					let indExercise = this.props.currentWorkout.workout[item];
 
-			return <SelectedExerciseRow key={indExercise.exerciseID} id={indExercise.exerciseID} exercise={indExercise.exerciseName} weight={indExercise.weight} sets={indExercise.numberOfSets} reps={indExercise.numberOfReps}   />
+			return <SelectedExerciseRow key={indExercise.exerciseID} id={indExercise.exerciseID} exercise={indExercise.exerciseName} weight={indExercise.weight} sets={indExercise.numberOfSets} reps={indExercise.maxReps}   />
 
 			});
 

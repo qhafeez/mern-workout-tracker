@@ -11,7 +11,8 @@ const initialState ={
 	exerciseModalShow:false,
 	notesModalShow:false,
 	workoutAddProcessing:false,
-	workoutAddMessage:null
+	workoutAddMessage:null,
+	oneWorkout:null
 
 };
 
@@ -107,6 +108,27 @@ const reducer = (state = initialState, action) => {
 			return{
 				...state,
 				currentWorkout:null
+			}
+
+		case actionTypes.FETCH_ONE_WORKOUT_SUCCESS:
+
+			return{
+				...state,
+				oneWorkout:action.oneWorkout
+			}
+
+		case actionTypes.FETCH_ONE_WORKOUT_FAIL:
+
+			return{
+				...state,
+				oneWorkout:action.oneWorkout
+			}
+
+		case actionTypes.RESET_ONE_WORKOUT_NULL:
+
+			return{
+				...state,
+				oneWorkout:action.oneWorkout
 			}
 
 		// case actionTypes.FETCH_WORKOUT_FAIL:

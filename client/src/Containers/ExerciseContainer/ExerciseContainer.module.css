@@ -22,10 +22,30 @@ border-radius: 5px 5px 0px 0px;
 	box-shadow: 2px 2px 2px lightgray;
 	justify-content: center;
 	box-sizing: content-box;
+	position: relative;
 
 
 
 }
+
+.completedSet{
+	position: absolute;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	background-color: white;
+	display: none;
+	cursor: pointer;	
+	
+}
+
+.completedSetInner{
+	justify-content: center;
+	align-self:  center;
+	font-size: 30px;
+}
+
 
 .individualExerciseContainer:last-of-type{
 	

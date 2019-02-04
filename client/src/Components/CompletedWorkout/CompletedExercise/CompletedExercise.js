@@ -29,6 +29,9 @@ const completedExercise = (props) =>{
 			<div className={classes.aaa}>
 			{workout}	
 			</div>
+			<div>
+				{props.notes}
+			</div>
 		</div>
 
 		)

@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import authReducer from "./store/reducers/auth-reducer";
 import workoutReducer from "./store/reducers/workout-reducer";
 import thunk from "redux-thunk";
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, BrowserHistory} from "react-router-dom";
 import registerServiceWorker from './registerServiceWorker';
 
 
@@ -22,13 +22,13 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
-
+//basename={process.env.PUBLIC_URL}
 
 ReactDOM.render(
 
 
 	<Provider store={store}>
-		<BrowserRouter basename={process.env.PUBLIC_URL}>
+	<BrowserRouter basename="/" >
 			<App />
 		</BrowserRouter>
 	</Provider>, document.getElementById('root'));

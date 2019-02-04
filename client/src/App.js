@@ -46,12 +46,13 @@ class App extends Component {
 
   componentDidMount(){
       console.log("[app cdm] " );
+      console.log(document.cookie.session);
 
        let query = queryString.parse(this.props.location.search);
       
       console.log(query);
 
-      if (query.token) {
+      if(query.token){
         // window.localStorage.setItem("token", query.token);
         this.props.onAuth(query.token);
         // this.props.history.push("/");
@@ -63,10 +64,9 @@ class App extends Component {
         this.props.fetchCurrentWorkout(lsToken);
         this.props.fetchWorkoutHistory(lsToken)
      }
+
       console.log(this.props.isAuthenticated);
-    
-  
-  
+     
   
   }
 
@@ -78,6 +78,7 @@ class App extends Component {
     if(nextProps.isAuthenticated ===null && this.props.isAuthenticated === true){
       window.location = "https://workout-tracker-qh.herokuapp.com/";
     }
+    console.log(document.cookie);
   }
 
 // componentDidUpdate(prevProps, prevState){
@@ -94,7 +95,7 @@ class App extends Component {
   render() {
     
   
-let   routes= <Switch>
+         {/* let  routes= <Switch>
           
               <Route path="/logout" render={()=>(
                 this.props.isAuthenticated ? (<Logout/>) : (<Redirect to="/"
@@ -122,7 +123,27 @@ let   routes= <Switch>
 
               
           
-           </Switch>
+           </Switch>*/}
+
+           let routes =null;
+           if(this.props.isAuthenticated){
+            routes = <Switch>
+                        <Route path="/logout" component={Logout} />
+                        <Route path="/home" component={Home} />
+                        <Route path="/history" component={History} />
+                        <Route path="/workoutSelector" component={WorkoutSelector} />
+                        <Route path="/workout" component={Workout} />
+                        <Route component={Home} />
+
+
+                      </Switch>
+           } else{
+              routes =<Switch>
+                        <Route path="/" component={Auth} />
+                        
+
+                      </Switch>
+           }
          
 
 
@@ -135,8 +156,9 @@ console.log(routes);
 
       <Layout>
         <div>
-          
-         {routes}
+        
+          {routes}
+         
 
         </div>
       </Layout>
@@ -159,11 +181,12 @@ const mapDispatchToProps = dispatch =>{
 
   return {
 
-    onTryAutoSignUp: () => dispatch(actions.AuthCheckState()),
+    cookieCheck: () => dispatch(actions.AuthCheckState()),
     onAuth: (token) => dispatch(actions.auth(token)),
     fetchCurrentWorkout:(token)=>{dispatch(actions.fetchCurrentWorkout(token))},
     // setRefreshPath: (val) => dispatch(actions.setRefreshPath(val))
-    fetchWorkoutHistory:(token)=>{dispatch(actions.fetchWorkoutHistory(token))}
+    fetchWorkoutHistory:(token)=>{dispatch(actions.fetchWorkoutHistory(token))},
+    logout:()=>dispatch(actions.logout())
 
 
   }

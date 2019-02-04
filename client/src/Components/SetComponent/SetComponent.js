@@ -3,7 +3,7 @@ import classes from "./SetComponent.module.css";
 import {connect} from "react-redux";
 import * as actions from "../../store/actions/index.js"; 
 
-import firebase from "../../fire.js";
+
 
 class SetComponent extends Component{
 

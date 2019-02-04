@@ -5,7 +5,7 @@ import * as actionTypes from "./actionTypes";
   we don't use the baseURL that is set up in that one	
 */
 import axios from "axios";
-import firebase, { authRef, provider } from '../../fire.js';
+// import firebase, { authRef, provider } from '../../fire.js';
 
 
 
@@ -197,46 +197,46 @@ export const AuthCheckState = () =>{
 
 	return dispatch => {
 
-	const token = localStorage.getItem("token");
+	// const token = localStorage.getItem("token");
 	
 
-	if(!token){
+		if(!document.cookie.session){
 
-		dispatch(logout());
-
-
-	} else{
-		const userId = localStorage.getItem("userId");
-
-		//localStorage.getItem("expirationDate") will return a string. passing it as an argument will return a new Date object
-
-		const expirationDate = new Date(localStorage.getItem("expirationDate"));
-
-		if(expirationDate > new Date()){
-
-			//if the expirationDate is greater than the new Date() at the time this code is run,
-			//it means we are logged in
-
-
-			console.log(expirationDate.getTime() - new Date().getTime());
-			console.log("AuthCheckState if(expdate > new Date)")
-			dispatch(authSuccess(token, userId));
-			dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime())/1000));
-
-		} else{
-
-			//if the expirationDate is less than the new Date() at the time this code is run
-			//it means the app should log out as we are only supposed to be logged in for one hour
-
-			dispatch(logout());
-
+			dispatch(authLogout());
 		}
+
+	// } else{
+	// 	const userId = localStorage.getItem("userId");
+
+	// 	//localStorage.getItem("expirationDate") will return a string. passing it as an argument will return a new Date object
+
+	// 	const expirationDate = new Date(localStorage.getItem("expirationDate"));
+
+	// 	if(expirationDate > new Date()){
+
+	// 		//if the expirationDate is greater than the new Date() at the time this code is run,
+	// 		//it means we are logged in
+
+
+	// 		console.log(expirationDate.getTime() - new Date().getTime());
+	// 		console.log("AuthCheckState if(expdate > new Date)")
+	// 		dispatch(authSuccess(token, userId));
+	// 		dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime())/1000));
+
+	// 	} else{
+
+	// 		//if the expirationDate is less than the new Date() at the time this code is run
+	// 		//it means the app should log out as we are only supposed to be logged in for one hour
+
+	// 		dispatch(logout());
+
+	// 	}
 
 		
 
-	}
+	// }
 
-}
+	}
 
 
 }
