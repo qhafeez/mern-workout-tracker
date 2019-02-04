@@ -90,9 +90,9 @@ app.get("/auth/google/redirect", passport.authenticate("google"), (req,res)=>{
 	console.log("isinde redirect");
 	console.log(req.user)
 	
-	// res.redirect("http://workout-tracker-qh.herokuapp.com/?token="+req.user.token);
+	res.redirect("http://workout-tracker-qh.herokuapp.com/?token="+req.user.token);
 	// res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-	res.redirect("http://localhost:3000/?token="+req.user.token);
+	// res.redirect("http://localhost:3000/?token="+req.user.token);
 
 });
 

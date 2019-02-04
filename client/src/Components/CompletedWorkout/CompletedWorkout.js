@@ -20,7 +20,7 @@ deleteWorkout = () =>{
 		this.props.deleteWorkout(this.props.oneWorkout[0].workoutId, this.props.token);
 		this.closeWorkout();
 	} else{
-		window.alert("NOOOOOOO");
+		window.alert("OK, workout will not be deleted");
 	}
 
 
