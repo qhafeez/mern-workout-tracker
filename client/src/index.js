@@ -22,14 +22,13 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
-console.log("process.env.public_url");
-console.log(process.env.PUBLIC_URL);
+
 
 ReactDOM.render(
 
 
 	<Provider store={store}>
-	<BrowserRouter basename={process.env.PUBLIC_URL}>
+	<BrowserRouter >
 			<App />
 		</BrowserRouter>
 	</Provider>, document.getElementById('root'));
