@@ -268,7 +268,8 @@ class Auth extends Component {
 							<Button style={{margin:"0px"}} btnType="Danger" clicked={this.switchAuthModeHandler}>SWITCH TO {this.state.isSignUp ? "Sign In" : "SIGN UP"}</Button>*/}
 		
 						
-							<a href="http://localhost:4000/google"><div className={classes.googleButton}>Login with Google</div></a>
+							{/* <a href="http://localhost:4000/google"><div className={classes.googleButton}>Login with Google</div></a>*/}
+							<a href="https://workout-tracker-qh.herokuapp.com/google"><div className={classes.googleButton}>Login with Google</div></a
 							
 					</div>
 					<div className={classes.appInfoContainer}>
