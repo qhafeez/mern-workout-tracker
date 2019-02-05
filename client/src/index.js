@@ -22,7 +22,8 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
-
+console.log("process.env.public_url");
+console.log(process.env.PUBLIC_URL);
 
 ReactDOM.render(
 
