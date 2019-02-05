@@ -44,14 +44,17 @@ app.use(passport.session());
 
 if (process.env.NODE_ENV === 'production') {
 	console.log("inside prod");
-	// app.use(express.static(path.join(__dirname,'client/build')));
-	app.use(express.static('client/build'));
+	app.use(express.static(path.join(__dirname,'client/build')));
+
 } 
 
 console.log("1");
 
 
 let connection = keys.connection;
+
+console.log("connection");
+console.log(connection)
 
 //this prevents the database connection from closing
 //by querying this meaningless query every five seconds
