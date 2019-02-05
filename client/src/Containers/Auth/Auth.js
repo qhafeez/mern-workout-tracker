@@ -269,7 +269,7 @@ class Auth extends Component {
 		
 						
 							{/* <a href="http://localhost:4000/google"><div className={classes.googleButton}>Login with Google</div></a>*/}
-							<a href="https://workout-tracker-qh.herokuapp.com/google"><div className={classes.googleButton}>Login with Google</div></a
+							<a href="https://workout-tracker-qh.herokuapp.com/google"><div className={classes.googleButton}>Login with Google</div></a>
 							
 					</div>
 					<div className={classes.appInfoContainer}>
