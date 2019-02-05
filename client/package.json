@@ -33,7 +33,7 @@
   "devDependencies": {
     "redux-devtools-extension": "^2.13.5"
   },
-  
+  "homepage":"https://http://workout-tracker-qh.herokuapp.com",
   "browserslist": [
     ">0.2%",
     "not dead",
