@@ -100,6 +100,9 @@ app.get("/auth/google/redirect", passport.authenticate("google"), (req,res)=>{
 
 });
 
+console.log("connection");
+console.log(connection)
+
 app.get("/sessCheck", (req,res)=>{
 
 	let exists = req.session;
