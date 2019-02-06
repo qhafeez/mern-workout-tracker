@@ -838,7 +838,7 @@ function getExercisesInWorkout(connection,workoutId){
 
 		connection.query("SELECT workouts.workoutId, workouts.notes, exercisesPerWorkout.exerciseId, exercisesPerWorkout.exerciseName, exercisesPerWorkout.weight, sets.setId, sets.reps, sets.maxReps, sets.completed FROM workouts JOIN exercisesPerWorkout on workouts.workoutId = exercisesPerWorkout.workoutId JOIN  sets ON exercisesPerWorkout.exerciseId = sets.exerciseId WHERE "+q, wid,(error, results)=>{
 
-			if (error) return (error);
+			if (error) console.log(error);
 			// console.log(results);
 			
 			resolve(results)
