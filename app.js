@@ -53,7 +53,8 @@ console.log("1");
 
 let connection = keys.connection;
 
-
+console.log("connection");
+console.log(connection)
 
 //this prevents the database connection from closing
 //by querying this meaningless query every five seconds
@@ -61,8 +62,7 @@ setInterval(()=>{
 	connection.query("SELECT 1");
 }, 5000);
 
-console.log("connection");
-console.log(connection)
+
 // let options = {
 // 		origin:"https://workout-tracker-qh.herokuapp.com",
 // 		credentials:true,
@@ -99,9 +99,6 @@ app.get("/auth/google/redirect", passport.authenticate("google"), (req,res)=>{
 	// res.redirect("http://localhost:3000/?token="+req.user.token);
 
 });
-
-console.log("connection");
-console.log(connection)
 
 app.get("/sessCheck", (req,res)=>{
 
