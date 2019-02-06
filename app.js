@@ -807,7 +807,7 @@ addRep=(connection, setId)=>{
 function getWorkoutDate(connection, workoutId){
 	return new Promise((resolve,reject)=>{
 		connection.query("SELECT EXTRACT(MONTH FROM workoutDate) AS month, EXTRACT(DAY FROM workoutDate) AS day, EXTRACT(YEAR FROM workoutDate) AS year FROM workouts WHERE workoutId =  ?", workoutId, (err,res)=>{
-			if(err) reject(err);
+			if(err) return reject(err);
 
 			resolve(res);
 		})
@@ -838,7 +838,10 @@ function getExercisesInWorkout(connection,workoutId){
 
 		connection.query("SELECT workouts.workoutId, workouts.notes, exercisesPerWorkout.exerciseId, exercisesPerWorkout.exerciseName, exercisesPerWorkout.weight, sets.setId, sets.reps, sets.maxReps, sets.completed FROM workouts JOIN exercisesPerWorkout on workouts.workoutId = exercisesPerWorkout.workoutId JOIN  sets ON exercisesPerWorkout.exerciseId = sets.exerciseId WHERE "+q, wid,(error, results)=>{
 
-			if (error) console.log(error);
+			if (error) {
+				console.log(error);
+				return reject(error);	
+			}
 			// console.log(results);
 			
 			resolve(results)
