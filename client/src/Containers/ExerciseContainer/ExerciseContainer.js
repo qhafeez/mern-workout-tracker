@@ -78,7 +78,7 @@ clicked=(setId)=>{
 				console.log("if " + this.setTimeoutId);
 
 
-		}},200)
+		}},500)
 		
 	
 
