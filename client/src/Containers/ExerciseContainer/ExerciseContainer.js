@@ -39,28 +39,6 @@ componentDidMount(){
 
 }
 
-componentDidUpdate(prevProps){
-
-// 	let currentExercise = this.props.currentWorkout.workout[this.props.index];
-
-// 	if(prevProps.currentWorkout.workout[this.props.index].sets !== currentExercise.sets){
-// 		console.log("hello");
-	
-// 	let completedSets = currentExercise.sets.filter(set=>{
-// 			return set.completed === 1;
-// 		}).length;
-// 	if(completedSets === currentExercise.sets.length){
-
-// 		this.setTimeoutId =	setTimeout(()=>{
-// 			this.setState({
-// 			display:true
-// 		});	
-// 		}, 500)
-		
-// 	}
-// }
-
-}
 
 
 removeCompletedDisplay=()=>{
@@ -100,7 +78,7 @@ clicked=(setId)=>{
 				console.log("if " + this.setTimeoutId);
 
 
-		}},100)
+		}},200)
 		
 	
 
