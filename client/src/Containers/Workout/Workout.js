@@ -65,8 +65,9 @@ componentDidMount(){
 componentDidUpdate(prevProps, prevState){
 
 	if(prevProps.currentWorkout !== this.props.currentWorkout && this.props.currentWorkout === null ){
+		this.props.fetchWorkoutHistory(this.props.token);
 		this.props.history.push("/home");
-		
+
 	}
 
 }
@@ -342,7 +343,8 @@ const mapDispatchToProps = dispatch =>{
 		notesModalClose:() => dispatch(actions.notesModalClose()),
 		openExerciseModal: ()=>{dispatch(actions.exerciseModalShow())},
 		openNotesModal:()=>{dispatch(actions.notesModalShow())},
-		completeWorkout:(workoutId, token)=>{dispatch(actions.completeWorkout(workoutId,token))}
+		completeWorkout:(workoutId, token)=>{dispatch(actions.completeWorkout(workoutId,token))},
+		fetchWorkoutHistory:(token)=>{dispatch(actions.fetchWorkoutHistory(token))}
 
 
 	}
