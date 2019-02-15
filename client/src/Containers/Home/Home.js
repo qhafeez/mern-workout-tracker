@@ -30,7 +30,7 @@ class Home extends Component{
 		// this.props.fetchWorkoutHistory(this.props.userId)
 
 
-	this.setState()
+	// this.setState()
 	
 	}
 
