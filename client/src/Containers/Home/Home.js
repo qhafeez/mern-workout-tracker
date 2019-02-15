@@ -15,22 +15,37 @@ import axiosInstance from "axios";
 
 class Home extends Component{
 
+	state={
+
+		workout:null;		
+
+	}
+
+
+
 	componentDidMount(){
 		console.log("[home cdm]");
 
 		// this.props.fetchCurrentWorkout(this.props.isAuthenticated);
 		// this.props.fetchWorkoutHistory(this.props.userId)
+
+
+	this.setState()
 	
 	}
 
-	
+	componentDidUpdate(prevProps){
 
+		if(JSON.stringify(prevProps.workoutHistory[0]) !== JSON.stringify(this.props.workoutHistory[0])){
 
-	state={
+			window.location.reload();
 
-		
+		}
 
 	}
+
+
+	
 
 	
 redirectHandler = () =>{
