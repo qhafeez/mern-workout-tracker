@@ -39,26 +39,11 @@ componentDidMount(){
 
 }
 
+componentDidUpdate(prevProps){
 
+				if(prevProps.currentWorkout.workout[prevProps.index] !== this.props.currentWorkout.workout[this.props.index]){
 
-removeCompletedDisplay=()=>{
-
-	this.setState({
-		display:false
-	})
-
-}
-
-clicked=(setId)=>{
-	//this will be the function that increases the rep by one
-	// console.log(this.props.workoutId);
-	this.props.repHandler(setId, this.props.token, this.props.workoutId);
-
-	//this delay was added to make sure the completed sets variable contains the most current 
-	//data.  without it, it will execute before the rephandler method finishes.
-		setTimeout(()=>{
-
-					let currentExercise = this.props.currentWorkout.workout[this.props.index];
+			let currentExercise = this.props.currentWorkout.workout[this.props.index];
 			let completedSets = currentExercise.sets.filter(set=>{
 					return set.completed === 1;
 				}).length;
@@ -76,9 +61,51 @@ clicked=(setId)=>{
 				});	
 				}, 500)
 				console.log("if " + this.setTimeoutId);
+			}
+	}
+
+}
 
 
-		}},500)
+
+removeCompletedDisplay=()=>{
+
+	this.setState({
+		display:false
+	})
+
+}
+
+clicked=(setId)=>{
+	//this will be the function that increases the rep by one
+	// console.log(this.props.workoutId);
+	this.props.repHandler(setId, this.props.token, this.props.workoutId);
+
+	//this delay was added to make sure the completed sets variable contains the most current 
+	//data.  without it, it will execute before the rephandler method finishes.
+		// setTimeout(()=>{
+
+		// 			let currentExercise = this.props.currentWorkout.workout[this.props.index];
+		// 	let completedSets = currentExercise.sets.filter(set=>{
+		// 			return set.completed === 1;
+		// 		}).length;
+
+		// 	if(completedSets === currentExercise.sets.length){
+
+		// 		if(this.setTimeoutId){
+					
+		// 			clearTimeout(this.setTimeoutId);
+		// 			console.log("if " + this.setTimeoutId);
+		// 		}
+		// 		this.setTimeoutId =	setTimeout(()=>{
+		// 			this.setState({
+		// 			display:true
+		// 		});	
+		// 		}, 500)
+		// 		console.log("if " + this.setTimeoutId);
+
+
+		// }},500)
 		
 	
 
