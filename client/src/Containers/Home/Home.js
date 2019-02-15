@@ -32,7 +32,7 @@ class Home extends Component{
 
 	componentDidUpdate(prevProps){
 
-		// if(prevProps !== null){
+		if(this.props.workoutHistory !== null){
 
 		// if(JSON.stringify(prevProps.workoutHistory[0]) !== JSON.stringify(this.props.workoutHistory[0])){
 
@@ -45,7 +45,7 @@ class Home extends Component{
 
 		console.log("this.props");
 		console.log(this.props.workoutHistory);
-
+}
 	}
 
 
