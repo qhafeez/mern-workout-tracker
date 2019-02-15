@@ -41,7 +41,7 @@ componentDidMount(){
 
 componentDidUpdate(prevProps){
 
-				if(prevProps.currentWorkout.workout[prevProps.index] !== this.props.currentWorkout.workout[this.props.index]){
+				if(JSON.stringify(prevProps.currentWorkout.workout[prevProps.index]) !== JSON.stringify(this.props.currentWorkout.workout[this.props.index])){
 
 			let currentExercise = this.props.currentWorkout.workout[this.props.index];
 			let completedSets = currentExercise.sets.filter(set=>{
