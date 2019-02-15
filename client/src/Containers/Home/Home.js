@@ -15,11 +15,7 @@ import axiosInstance from "axios";
 
 class Home extends Component{
 
-	state={
-
-		workout:null;		
-
-	}
+	
 
 
 
