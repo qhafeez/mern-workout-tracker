@@ -40,7 +40,8 @@ componentDidMount(){
 }
 
 componentDidUpdate(prevProps){
-
+				//stringify is needed to compare the values of the objects.
+				//otherwise it will always say the objects are not equal
 				if(JSON.stringify(prevProps.currentWorkout.workout[prevProps.index]) !== JSON.stringify(this.props.currentWorkout.workout[this.props.index])){
 
 			let currentExercise = this.props.currentWorkout.workout[this.props.index];
