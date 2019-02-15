@@ -23,6 +23,13 @@ class Home extends Component{
 	
 	}
 
+	componentDidUpdate(prevProps){
+
+		if(prevProps)
+
+
+	}
+
 
 	state={
 

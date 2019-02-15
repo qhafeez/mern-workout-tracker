@@ -65,7 +65,9 @@ componentDidMount(){
 componentDidUpdate(prevProps, prevState){
 
 	if(prevProps.currentWorkout !== this.props.currentWorkout && this.props.currentWorkout === null ){
-		this.props.history.push("/home");
+		// this.props.history.push("/home");
+		window.location.reload();
+
 	}
 
 }
