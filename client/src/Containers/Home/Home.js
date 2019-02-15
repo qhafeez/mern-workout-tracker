@@ -32,12 +32,14 @@ class Home extends Component{
 
 	componentDidUpdate(prevProps){
 
+		if(prevProps !== null){
+
 		if(JSON.stringify(prevProps.workoutHistory[0]) !== JSON.stringify(this.props.workoutHistory[0])){
 
 			window.location.reload();
 
+			}
 		}
-
 	}
 
 
